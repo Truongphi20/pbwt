@@ -26,16 +26,17 @@ Installation instructions
 ------------------------
 Download htslib from https://github.com/samtools/htslib, and compile it
 
-   git clone https://github.com/samtools/htslib
-   cd htslib
-   make
-   cd ..
+    git clone https://github.com/samtools/htslib
+    cd htslib
+    git submodule update --init --recursive  # Download htscodecs submodule
+    make
+    cd ..
 
 Download and make pbwt
 
-   git clone https://github.com/richarddurbin/pbwt
-   cd pbwt
-   make
+    git clone https://github.com/richarddurbin/pbwt
+    cd pbwt
+    make
 
 Brief usage instructions
 ------------------------
