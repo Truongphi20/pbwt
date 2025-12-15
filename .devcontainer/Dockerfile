@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
@@ -19,9 +18,12 @@ RUN apt-get update && apt-get install -y \
     git \
     wget \
     ca-certificates \
+    libboost-program-options-dev \
+    libboost-iostreams-dev \
+    libboost-serialization-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Build HTSlib (release tarball, NO autotools)
+# Build HTSlib
 WORKDIR /opt
 RUN wget https://github.com/samtools/htslib/releases/download/1.16/htslib-1.16.tar.bz2 && \
     tar -xjf htslib-1.16.tar.bz2 && \
@@ -31,6 +33,15 @@ RUN wget https://github.com/samtools/htslib/releases/download/1.16/htslib-1.16.t
     make install && \
     ldconfig && \
     cd .. && rm -rf htslib-1.16*
+
+# Install macs
+RUN git clone https://github.com/gchen98/macs.git && \
+    cd macs && \
+    make && \
+    chmod 777 macs && \
+    cp macs /usr/bin && \
+    cd .. && rm -rf macs
+
 
 # Create vscode user
 RUN useradd -m -s /bin/bash vscode && \
