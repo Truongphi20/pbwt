@@ -4,7 +4,7 @@ HTSDIR=/usr/local/lib/
 HTSLIB=$(HTSDIR)/libhts.a
 LDLIBS=-lpthread $(HTSLIB) -lz -lm -lbz2 -llzma -lcurl
 
-all: pbwt
+all: pbwt clean
 
 PBWT_COMMIT_HASH = ""
 ifneq "$(wildcard .git)" ""
@@ -40,7 +40,7 @@ install: all
 	install pbwt $(PREFIX)
 
 clean:
-	$(RM) *.o pbwt *~ version.h
+	$(RM) *.o *~ version.h
 
 .PHONY: all test clean force install
 
