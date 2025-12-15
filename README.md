@@ -38,6 +38,16 @@ Download and make pbwt
     cd pbwt
     make
 
+Or using [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers) in vscode
+
+    cd pbwt
+    code .          ## Open vscode
+
+`Ctrl + Shift + P` > `Dev Container: Reopen in container`.
+    
+    make            ## Compile pbwt
+
+
 Brief usage instructions
 ------------------------
 
