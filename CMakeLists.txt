@@ -31,7 +31,7 @@ configure_file(
 )
 
 # Build executable
-add_executable(pbwt src/pbwtMain.c)
+add_executable(pbwt src/main.c src/pbwtMain.c)
 
 # PBWT library
 add_library(pbwt_lib 

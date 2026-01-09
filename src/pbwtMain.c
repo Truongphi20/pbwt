@@ -21,14 +21,10 @@
  *-------------------------------------------------------------------
  */
 
-#define _POSIX_C_SOURCE 200809L
-#include <string.h>
-#include "pbwt.h"
-#include "version.h"
+
+#include "pbwtMain.h"
 
 /*********************************************************/
-
-#include "math.h"
 
 static PBWT *playGround (PBWT *p)
 {
@@ -180,7 +176,7 @@ const char *pbwtCommitHash(void)
 
 FILE *logFile ; /* log file pointer */
 
-int main (int argc, char *argv[])
+int pbwtMain (int argc, char *argv[])
 {
   FILE *fp ;
   FILE *lp ;
