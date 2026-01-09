@@ -22,3 +22,6 @@ utils
 
 # Version file
 /version.h
+
+# Build
+build

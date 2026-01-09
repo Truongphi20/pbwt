@@ -42,6 +42,21 @@ RUN git clone https://github.com/gchen98/macs.git && \
     cp macs /usr/bin && \
     cd .. && rm -rf macs
 
+# Install cmake
+RUN mkdir -p /usr/local
+RUN cd /usr/local &&\
+    wget https://github.com/Kitware/CMake/releases/download/v4.0.2/cmake-4.0.2-linux-x86_64.sh &&\
+    chmod +x cmake-4.0.2-linux-x86_64.sh &&\
+    ./cmake-4.0.2-linux-x86_64.sh --skip-license
+
+
+    # Install required packages to debug
+RUN apt-get update && apt-get install -y --no-install-recommends openssh-client \
+                                                gdb \
+                                                bcftools \
+                                                less \
+                                                bash-completion
+
 
 # Create vscode user
 RUN useradd -m -s /bin/bash vscode && \
