@@ -25,3 +25,6 @@ utils
 
 # Build
 build
+
+# Test
+/data.*
