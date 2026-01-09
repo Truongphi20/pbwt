@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(pbwt
     VERSION 2.1.0
-    LANGUAGES C
+    LANGUAGES C CXX
 )
 
 # Use a modern C standard
@@ -30,11 +30,9 @@ configure_file(
     @ONLY
 )
 
-# Build executable
-add_executable(pbwt src/main.c src/pbwtMain.c)
-
 # PBWT library
 add_library(pbwt_lib 
+    src/pbwtMain.c
     src/array.c
     src/dict.c
     src/hash.c
@@ -56,22 +54,30 @@ target_include_directories(pbwt_lib
         ${PROJECT_BINARY_DIR}/generated
 )
 
-# Linking
-target_link_libraries(pbwt 
-        pbwt_lib 
-        pthread
-        hts
-        z
-        m
-        bz2
-        lzma
-        curl
-)
+option(TEST "DO GTEST" OFF)
+if (TEST)
+  add_subdirectory(test)
+else()
+    # Build executable
+    add_executable(pbwt src/main.c)
 
-# Compiler warnings
-target_compile_options(pbwt
-    PRIVATE
-        -Wall
-        -Wextra
-        -Wpedantic
-)
+    # Linking
+    target_link_libraries(pbwt 
+            pbwt_lib 
+            pthread
+            hts
+            z
+            m
+            bz2
+            lzma
+            curl
+    )
+
+    # Compiler warnings
+    target_compile_options(pbwt
+        PRIVATE
+            -Wall
+            -Wextra
+            -Wpedantic
+    )
+endif()

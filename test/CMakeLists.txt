@@ -10,7 +10,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 # Set up a run from the tutorial: https://choishingwan.github.io/PRS-Tutorial/
-add_executable(test_run test_run.c)
+add_executable(test_run test_run.cpp)
 target_link_libraries(test_run GTest::gtest_main 
                                        pbwt_lib 
                                         pthread
