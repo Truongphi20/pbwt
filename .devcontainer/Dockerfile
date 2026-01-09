@@ -50,12 +50,21 @@ RUN cd /usr/local &&\
     ./cmake-4.0.2-linux-x86_64.sh --skip-license
 
 
-    # Install required packages to debug
+# Install required packages to debug
 RUN apt-get update && apt-get install -y --no-install-recommends openssh-client \
                                                 gdb \
                                                 bcftools \
                                                 less \
                                                 bash-completion
+
+# Install Python
+RUN sudo apt-get update && sudo apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    python3-dev \
+    python-is-python3 \
+    && sudo rm -rf /var/lib/apt/lists/*
 
 
 # Create vscode user
