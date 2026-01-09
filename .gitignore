@@ -22,3 +22,9 @@ utils
 
 # Version file
 /version.h
+
+# Build
+build
+
+# Test
+/data.*
