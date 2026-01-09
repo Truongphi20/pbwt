@@ -56,7 +56,7 @@ target_include_directories(pbwt_lib
 
 option(TEST "DO GTEST" OFF)
 if (TEST)
-  add_subdirectory(test)
+  add_subdirectory(tests)
 else()
     # Build executable
     add_executable(pbwt src/main.c)
