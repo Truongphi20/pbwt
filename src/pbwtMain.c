@@ -312,7 +312,8 @@ int pbwtMain (int argc, char *argv[])
     else if (!strcmp (argv[0], "-readVcfGT") && argc > 1)
       { 
         if (p) 
-        pbwtDestroy (p) ; 
+          pbwtDestroy (p) ; 
+
         p = pbwtReadVcfGT (argv[1]) ; 
         argc -= 2 ; 
         argv += 2 ; 
