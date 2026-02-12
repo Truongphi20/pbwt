@@ -74,3 +74,8 @@ RUN useradd -m -s /bin/bash vscode && \
 
 USER vscode
 WORKDIR /workspace
+
+# Install uv (Python package manager)
+RUN wget -qO- https://astral.sh/uv/install.sh | sh
+ENV PATH="/home/vscode/.local/bin:${PATH}"
+ENV UV_LINK_MODE=copy
