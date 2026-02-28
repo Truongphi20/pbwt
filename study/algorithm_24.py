@@ -42,7 +42,7 @@ class PBWT:
             if (self.cursor.d[i] > q):
                 q = self.cursor.d[i]
             
-            if self.cursor.y[i] == 0:       # NB x[a[i]] = y[i] in manuscript
+            if self.cursor.y[k][i] == 0:       # NB x[a[i]] = y[i] in manuscript
                 self.cursor.a[u] = self.cursor.a[i]
                 self.cursor.d[u] = p
                 u += 1
@@ -78,7 +78,8 @@ class PBWT:
 
                 if (self.cursor.d[i] <= self.cursor.d[i+1]):
                     while (self.cursor.d[m+1] <= self.cursor.d[i]):
-                        if ((self.cursor.y[m] == self.cursor.y[i]) and (k < self.N)):
+                        # src/pbwtMatch.c:126
+                        if ((self.cursor.y[k][m] == self.cursor.y[k][i]) and (k < self.N)):
                             m -= 1
                             skip_i = True
                             break
@@ -88,7 +89,7 @@ class PBWT:
                 
                 if (self.cursor.d[i] >= self.cursor.d[i+1]):
                     while (self.cursor.d[n] <= self.cursor.d[i+1]):
-                        if ((self.cursor.y[n] == self.cursor.y[i]) and (k < self.N)):
+                        if ((self.cursor.y[k][n] == self.cursor.y[k][i]) and (k < self.N)):
                             n += 1
                             skip_i = True
                             break
