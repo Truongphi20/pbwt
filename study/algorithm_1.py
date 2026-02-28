@@ -2,7 +2,9 @@
 
 
 def pbwtCursorForwardsA(record, a):
+    # Algorithm 1 in manuscript
     # src/pbwtCore.c:460
+    # Index to create *.pbwt file
     M = len(a)
     zeros = []
     ones = []
