@@ -18,46 +18,50 @@ class PBWT:
             M = self.M,
             N = self.N,
             d = [0] * (self.M + 1),
-            y = self.records[:,order],
+            y = [0] * self.M,
             a = order
         )
 
-    def pbwtCursorForwardsAD(self, k):
+    def pbwtCursorForwardsAD(self, x, k):
         """
         algorithm 2 in the manuscript
         src/pbwtCore.c:487
         """
 
         u = 0
+        p = k + 1
+        q = k + 1
 
-        p = k+1
-        q = k+1
+        b = [0] * x.M
+        e = [0] * x.M
+        v = 0
 
-        b = []
-        e = []
+        for i in range(x.M):
 
-        for i in range(self.M):
-            if (self.cursor.d[i] > p):
-                p = self.cursor.d[i]
-            if (self.cursor.d[i] > q):
-                q = self.cursor.d[i]
-            
-            if self.cursor.y[k][i] == 0:       # NB x[a[i]] = y[i] in manuscript
-                self.cursor.a[u] = self.cursor.a[i]
-                self.cursor.d[u] = p
+            if x.d[i] > p:
+                p = x.d[i]
+            if x.d[i] > q:
+                q = x.d[i]
+
+            if x.y[i] == 0:         # NB x[a[i]] = y[i] in manuscript
+                x.a[u] = x.a[i]
+                x.d[u] = p
                 u += 1
                 p = 0
-            else:                           # y[i] == 1, since bi-allelic
-                b.append(self.cursor.a[i])
-                e.append(q)
+            else:                   # y[i] == 1, since bi-allelic
+                b[v] = x.a[i]       
+                e[v] = q
+                v += 1
                 q = 0
-        
-        self.cursor.a = self.cursor.a[:u] + b
-        self.cursor.d = self.cursor.d[:u] + e
+
+        # copy 1-alleles to tail (memcpy equivalent)
+        for i in range(v):
+            x.a[u + i] = b[i]
+            x.d[u + i] = e[i]
 
         # sentinels
-        self.cursor.d[0] = k+2
-        self.cursor.d.append(k+2)
+        x.d[0] = k + 2
+        x.d[x.M] = k + 2
 
 
     def matchMaximalWithin(self):
@@ -65,39 +69,38 @@ class PBWT:
         algorithm 4 in the paper
         src/pbwtMatch.c:115
         """
+        x = self.cursor
 
-        m = 0
-        n = 0
+        for k in range(self.N):
 
-        for k in range(self.N + 1):
-            for i in range(self.M):
-                m = i-1
-                n = i+1
+            # IMPORTANT: y must reflect current site
+            x.y = self.records[k][x.a]
 
-                skip_i = False
+            for i in range(x.M):
 
-                if (self.cursor.d[i] <= self.cursor.d[i+1]):
-                    while (self.cursor.d[m+1] <= self.cursor.d[i]):
-                        # src/pbwtMatch.c:126
-                        if ((self.cursor.y[k][m] == self.cursor.y[k][i]) and (k < self.N)):
-                            m -= 1
-                            skip_i = True
+                m = i - 1
+                n = i + 1
+
+                # ---- left scan ----
+                if x.d[i] <= x.d[i + 1]:
+                    while m >= 0 and x.d[m + 1] <= x.d[i]:
+
+                        if k < x.N - 1 and x.y[m] == x.y[i]:
                             break
                         m -= 1
-    
-                    if skip_i: continue
-                
-                if (self.cursor.d[i] >= self.cursor.d[i+1]):
-                    while (self.cursor.d[n] <= self.cursor.d[i+1]):
-                        if ((self.cursor.y[k][n] == self.cursor.y[k][i]) and (k < self.N)):
-                            n += 1
-                            skip_i = True
+
+                # ---- right scan ----
+                if x.d[i] >= x.d[i + 1]:
+                    while n < x.M and x.d[n] <= x.d[i + 1]:
+
+                        if k < x.N - 1 and x.y[n] == x.y[i]:
                             break
                         n += 1
-                    
-                    if skip_i: continue
 
-            self.pbwtCursorForwardsAD(k)
+                # (Here is where matches would be reported)
+
+            # move PBWT forward
+            self.pbwtCursorForwardsAD(x, k)
 
 
 
@@ -108,8 +111,10 @@ if __name__ == "__main__":
         [1,0,0,1,1]
     ]
 
-    a = [1, 2, 0, 3, 4]
+    order = [1, 2, 0, 3, 4]
 
-    pbwt = PBWT(records, a)
+    pbwt = PBWT(records, order)
     pbwt.matchMaximalWithin()
-    print(pbwt.cursor)
+
+    print("Final permutation a:", pbwt.cursor.a)
+    print("Final divergence d:", pbwt.cursor.d)
