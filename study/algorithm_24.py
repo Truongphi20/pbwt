@@ -17,7 +17,7 @@ class PBWT:
         self.cursor = Cursor(
             M = self.M,
             N = self.N,
-            d = [0] * self.M,
+            d = [0] * (self.M + 1),
             y = self.records[:,order],
             a = order
         )
@@ -52,12 +52,12 @@ class PBWT:
                 e.append(q)
                 q = 0
         
-        self.cursor.a = self.cursor.a[u:] + b
-        self.cursor.d = self.cursor.d[u:] + e
+        self.cursor.a = self.cursor.a[:u] + b
+        self.cursor.d = self.cursor.d[:u] + e
 
         # sentinels
         self.cursor.d[0] = k+2
-        self.cursor.d[self.M] = k+2
+        self.cursor.d.append(k+2)
 
 
     def matchMaximalWithin(self):
