@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import numpy as np
+import pandas as pd
 
 @dataclass
 class Cursor:
@@ -109,22 +110,29 @@ class PBWT:
             # move PBWT forward
             self.pbwtCursorForwardsAD(x, k)
         
-        return report
+        return pd.DataFrame(
+                report, 
+                columns=["cor_hap", "match_hap", "start", "length"]
+            ).sort_values("cor_hap")\
+            .reset_index(drop=True)
 
 
 
 if __name__ == "__main__":
-    records = [
+    records = [                     # 5 haps x 3 sites
         [0,0,1,0,1],
         [0,1,1,0,0],
         [1,0,0,1,1]
     ]
 
-    order = [1, 2, 0, 3, 4]
+    order = [1, 2, 0, 3, 4]         # Read from the pbwt file (applied the algorithm 1)
 
     pbwt = PBWT(records, order)
     report = pbwt.matchMaximalWithin()
 
     print("Final permutation a:", pbwt.cursor.a)
     print("Final divergence d:", pbwt.cursor.d)
-    print("Report: ", report)
+    
+    print(report.loc[report["length"]!=0])
+
+    
