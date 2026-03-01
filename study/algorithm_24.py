@@ -70,6 +70,7 @@ class PBWT:
         src/pbwtMatch.c:115
         """
         x = self.cursor
+        report = []
 
         for k in range(self.N):
 
@@ -98,9 +99,17 @@ class PBWT:
                         n += 1
 
                 # (Here is where matches would be reported)
+                for j in range(m+1, i):
+                    report.append([x.a[i], x.a[j], x.d[i], k])
+                
+                for j in range(i+1, n):
+                    report.append([x.a[i], x.a[j], x.d[i+1], k])
+
 
             # move PBWT forward
             self.pbwtCursorForwardsAD(x, k)
+        
+        return report
 
 
 
@@ -114,7 +123,8 @@ if __name__ == "__main__":
     order = [1, 2, 0, 3, 4]
 
     pbwt = PBWT(records, order)
-    pbwt.matchMaximalWithin()
+    report = pbwt.matchMaximalWithin()
 
     print("Final permutation a:", pbwt.cursor.a)
     print("Final divergence d:", pbwt.cursor.d)
+    print("Report: ", report)
