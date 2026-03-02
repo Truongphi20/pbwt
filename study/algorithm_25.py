@@ -41,7 +41,7 @@ class PBWT:
         for k in range(0, self.N):
             a[k,:] = up.a
             d[k,:] = up.d
-            cc[k] = 
+            cc[k] = (self.base_records[k] == 0).sum()
 
         pass
 
