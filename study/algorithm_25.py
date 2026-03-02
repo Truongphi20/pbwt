@@ -1,3 +1,50 @@
+from dataclasses import dataclass
+import numpy as np
+
+@dataclass
+class Cursor:
+    d: list         # Location of last match
+    y: list         # Current value in sort order
+    a: list         # Index back to original order
+    M: int          # Number of samples * 2 (biallel)
+    N: int          # Number of sites
+    c: int          # number of 0s in y
+
+class PBWT:
+    def __init__(self, base_records, base_order, query_records):
+        self.base_records = np.array(base_records)
+        self.query_records = np.array(query_records)
+        self.M = len(base_records[0])
+        self.N = len(base_records)
+        self.cursor = Cursor(
+            M = self.M,
+            N = self.N,
+            d = [0] * (self.M + 1),
+            y = [0] * self.M,
+            a = order
+        )
+
+    def matchSequencesIndexed(self):
+        """
+        algorithm in the article
+        src/pbwtMatch.c:255
+        """
+
+        up = self.cursor
+
+        ## stored indexes
+        a = np.empty((self.N+1, self.M), dtype=int)
+        d = np.empty((self.N+1, self.M+1), dtype=int)
+        u = np.empty((self.N, self.M+1), dtype=int)
+        cc = [0] * self.N
+        
+        for k in range(0, self.N):
+            a[k,:] = up.a
+            d[k,:] = up.d
+            cc[k] = 
+
+        pass
+
 
 if __name__ == "__main__":
     base_records = [                     # 5 haps x 3 sites
