@@ -23,6 +23,8 @@ class PBWT:
             d = [0] * (self.M + 1),
             y = [0] * self.M,
             a = order
+            c = 0,
+            u = [0] * (self.M + 1)
         )
 
     def pbwtCursorCalculateU(self, x):
@@ -40,6 +42,48 @@ class PBWT:
         # need one off the end of update intervals
         x.c = u
         x.u[-1] = u
+
+    def pbwtCursorForwardsAD(self, x, k):
+        """
+        algorithm 2 in the manuscript
+        src/pbwtCore.c:487
+        """
+
+        p = k + 1
+        q = k + 1
+
+        b = [0] * x.M
+        e = [0] * x.M
+        
+        u = 0
+        v = 0
+
+        for i in range(x.M):
+
+            if x.d[i] > p:
+                p = x.d[i]
+            if x.d[i] > q:
+                q = x.d[i]
+
+            if x.y[i] == 0:         # NB x[a[i]] = y[i] in manuscript
+                x.a[u] = x.a[i]
+                x.d[u] = p
+                u += 1
+                p = 0
+            else:                   # y[i] == 1, since bi-allelic
+                b[v] = x.a[i]       
+                e[v] = q
+                v += 1
+                q = 0
+
+        # copy 1-alleles to tail (memcpy equivalent)
+        for i in range(v):
+            x.a[u + i] = b[i]
+            x.d[u + i] = e[i]
+
+        # sentinels
+        x.d[0] = k + 2
+        x.d[x.M] = k + 2
 
     def matchSequencesIndexed(self):
         """
@@ -62,6 +106,8 @@ class PBWT:
             d[k,:] = up.d
             cc[k] = (self.base_records[k] == 0).sum()       # Count number of 0s
             self.pbwtCursorCalculateU(up)
+            u[k,:] = up.u
+            self.pbwtCursorForwardsReadAD(up, k)
 
         pass
 
