@@ -143,6 +143,7 @@ class PBWT:
                     
                     nTot += 1
                     totLen += k-e 
+
                     e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
                     
                     if e1 >= self.N:
@@ -151,15 +152,17 @@ class PBWT:
                     if ((x[e1] == 0) and (f1 > 0)) or (f1 == self.M):
                         f1 = g1 - 1
                         y = self.base_records[:,a[k+1][f1]]
-                        while (x[e1-1] == y[e1-1]):
+                        while e1 > 0 and x[e1-1] == y[e1-1]:
                             e1 -= 1
-                        while (d[k+1][f1] <= e1):
+                        
+                        while f1 > 0 and d[k+1][f1] <= e1:
                             f1 -= 1
                     elif (f1 < self.M):
                         g1 = f1 + 1
-                        y = self.base_records[a[k+1][f1]]
-                        while (x[e1-1] == y[e1-1]):
+                        y = self.base_records[:,a[k+1][f1]]
+                        while e1 > 0 and x[e1-1] == y[e1-1]:
                             e1 -= 1
+                        
                         while ((g1 < self.M) and (d[k+1][g1] <= e1)):
                             g1 += 1
 
@@ -168,8 +171,9 @@ class PBWT:
                     g = g1
 
             ## report the maximal matches to the end
+            last_k = self.N - 1
             for i in range(f, g):
-                report.append([j, a[k][i], e, k])
+                report.append([j, a[last_k][i], e, last_k])
             
             nTot += 1
             totLen += k-e
