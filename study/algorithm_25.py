@@ -22,7 +22,7 @@ class PBWT:
             N = self.N,
             d = [0] * (self.M + 1),
             y = [0] * self.M,
-            a = order
+            a = base_order,
             c = 0,
             u = [0] * (self.M + 1)
         )
@@ -103,14 +103,14 @@ class PBWT:
         cc = [0] * self.N
         
         for k in range(0, self.N):
-            up.y = self.records[k][up.a]
+            up.y = self.base_records[k][up.a]
 
             a[k,:] = up.a
             d[k,:] = up.d
             cc[k] = (self.base_records[k] == 0).sum()       # Count number of 0s
             self.pbwtCursorCalculateU(up)
             u[k,:] = up.u
-            self.pbwtCursorForwardsReadAD(up, k)
+            self.pbwtCursorForwardsAD(up, k)
         
         a[self.N+1] = up.a
         d[self.N+1] = up.d
