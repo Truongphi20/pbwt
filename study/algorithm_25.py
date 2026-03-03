@@ -144,9 +144,13 @@ class PBWT:
                     nTot += 1
                     totLen += k-e 
                     e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
-                    if ((x[e1] == 0) and (f1 > 0)) or (f1 == M):
+                    
+                    if e1 >= self.N:
+                        e1 = self.N - 1
+
+                    if ((x[e1] == 0) and (f1 > 0)) or (f1 == self.M):
                         f1 = g1 - 1
-                        y = self.base_records[a[k+1][f1]]
+                        y = self.base_records[:,a[k+1][f1]]
                         while (x[e1-1] == y[e1-1]):
                             e1 -= 1
                         while (d[k+1][f1] <= e1):
@@ -156,7 +160,7 @@ class PBWT:
                         y = self.base_records[a[k+1][f1]]
                         while (x[e1-1] == y[e1-1]):
                             e1 -= 1
-                        while ((g1 < M) and (d[k+1][g1] <= e1)):
+                        while ((g1 < self.M) and (d[k+1][g1] <= e1)):
                             g1 += 1
 
                     e = e1
