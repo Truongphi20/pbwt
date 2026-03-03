@@ -9,6 +9,7 @@ class Cursor:
     M: int          # Number of samples * 2 (biallel)
     N: int          # Number of sites
     c: int          # number of 0s in y
+    u: list         # number of 0s up to and including this position
 
 class PBWT:
     def __init__(self, base_records, base_order, query_records):
@@ -23,6 +24,22 @@ class PBWT:
             y = [0] * self.M,
             a = order
         )
+
+    def pbwtCursorCalculateU(self, x):
+        """
+        src/pbwtCore.c:512
+        Count number of 0s to now and redefine number of 0s in y
+        """
+
+        u = 0
+        for i in range(self.M):
+            x.u[i] = u 
+            if (x.y[i] == 0): 
+                u += 1
+        
+        # need one off the end of update intervals
+        x.c = u
+        x.u[-1] = u
 
     def matchSequencesIndexed(self):
         """
@@ -39,9 +56,12 @@ class PBWT:
         cc = [0] * self.N
         
         for k in range(0, self.N):
+            up.y = self.records[k][up.a]
+
             a[k,:] = up.a
             d[k,:] = up.d
-            cc[k] = (self.base_records[k] == 0).sum()
+            cc[k] = (self.base_records[k] == 0).sum()       # Count number of 0s
+            self.pbwtCursorCalculateU(up)
 
         pass
 
