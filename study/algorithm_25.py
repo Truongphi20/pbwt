@@ -87,11 +87,14 @@ class PBWT:
 
     def matchSequencesIndexed(self):
         """
-        algorithm in the article
+        algorithm 5 in the article
         src/pbwtMatch.c:255
         """
 
         up = self.cursor
+        report = []
+        totLen = 0
+        nTot = 0
 
         ## build indexes
         a = np.empty((self.N+1, self.M), dtype=int)
@@ -113,9 +116,62 @@ class PBWT:
         d[self.N+1] = up.d
 
         ## match each query in turn
-        
+        for j in range(len(self.query_records[0])):
+            x = self.query_records[:,j]
 
-        pass
+            ## start of match, and pbwt interval as in algorithm 5
+            e = 0
+            f = 0
+            g = self.M
+
+            ## next versions of the above, e' etc in algorithm 5
+            e1 = 0
+            f1 = 0 
+            g1 = 0
+
+            for k in range(self.N):     # use classic FM updates to extend [f,g) interval to next position
+                f1 = (cc[k] + (f - u[k][f]) if x[k] else u[k][f])
+                g1 = (cc[k] + (g - u[k][g]) if x[k] else u[k][g])
+
+                # if the interval is non-zero we can just proceed
+                if g1 > f1:
+                    f = f1
+                    g = g1
+                else:   ## we have reached a maximum | study note: This block I has not checked through yet
+                    ## src/pbwtMatch.c:304 
+                    for i in range(f, g):
+                        report.append([j, a[k][i], e, k])
+                    
+                    nTot += 1
+                    totLen += k-e 
+                    e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
+                    if ((x[e1] == 0) and (f1 > 0)) or (f1 == M):
+                        f1 = g1 - 1
+                        y = self.base_records[a[k+1][f1]]
+                        while (x[e1-1] == y[e1-1]):
+                            e1 -= 1
+                        while (d[k+1][f1] <= e1):
+                            f1 -= 1
+                    elif (f1 < self.M):
+                        g1 = f1 + 1
+                        y = self.base_records[a[k+1][f1]]
+                        while (x[e1-1] == y[e1-1]):
+                            e1 -= 1
+                        while ((g1 < M) and (d[k+1][g1] <= e1)):
+                            g1 += 1
+
+                    e = e1
+                    f = f1
+                    g = g1
+
+            ## report the maximal matches to the end
+            for i in range(f, g):
+                report.append([j, a[k][i], e, k])
+            
+            nTot += 1
+            totLen += k-e
+
+        return report, nTot/len(self.query_records[0]), totLen/nTot
 
 
 if __name__ == "__main__":
@@ -132,3 +188,9 @@ if __name__ == "__main__":
         [0,1,0]
     ]
     query_order = [2, 0, 1]              # Read from the pbwt file (applied the algorithm 1)
+
+    report, avg_best_matches, avg_length = PBWT(base_records, base_order, query_records).matchSequencesIndexed()
+
+    print(report)
+    print(f"Average number of best matches: {avg_best_matches}")
+    print(f"Average length: {avg_length}")
