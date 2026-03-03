@@ -112,8 +112,8 @@ class PBWT:
             u[k,:] = up.u
             self.pbwtCursorForwardsAD(up, k)
         
-        a[self.N+1] = up.a
-        d[self.N+1] = up.d
+        a[self.N] = up.a
+        d[self.N] = up.d
 
         ## match each query in turn
         for j in range(len(self.query_records[0])):
@@ -137,8 +137,7 @@ class PBWT:
                 if g1 > f1:
                     f = f1
                     g = g1
-                else:   ## we have reached a maximum | study note: This block I has not checked through yet
-                    ## src/pbwtMatch.c:304 
+                else:   ## we have reached a maximum | src/pbwtMatch.c:304 
                     for i in range(f, g):
                         report.append([j, a[k][i], e, k])
                     
