@@ -29,12 +29,13 @@ class PBWT:
         src/pbwtCore.c:487
         """
 
-        u = 0
         p = k + 1
         q = k + 1
 
         b = [0] * x.M
         e = [0] * x.M
+        
+        u = 0
         v = 0
 
         for i in range(x.M):
