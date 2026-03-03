@@ -93,7 +93,7 @@ class PBWT:
 
         up = self.cursor
 
-        ## stored indexes
+        ## build indexes
         a = np.empty((self.N+1, self.M), dtype=int)
         d = np.empty((self.N+1, self.M+1), dtype=int)
         u = np.empty((self.N, self.M+1), dtype=int)
@@ -108,6 +108,12 @@ class PBWT:
             self.pbwtCursorCalculateU(up)
             u[k,:] = up.u
             self.pbwtCursorForwardsReadAD(up, k)
+        
+        a[self.N+1] = up.a
+        d[self.N+1] = up.d
+
+        ## match each query in turn
+        
 
         pass
 
