@@ -97,9 +97,9 @@ class PBWT:
         nTot = 0
 
         ## build indexes
-        a = np.empty((self.N+1, self.M), dtype=int)
-        d = np.empty((self.N+1, self.M+1), dtype=int)
-        u = np.empty((self.N, self.M+1), dtype=int)
+        a = np.zeros((self.N+1, self.M), dtype=int)
+        d = np.zeros((self.N+1, self.M+1), dtype=int)
+        u = np.zeros((self.N, self.M+1), dtype=int)
         cc = [0] * self.N
         
         for k in range(0, self.N):
