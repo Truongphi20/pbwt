@@ -145,9 +145,6 @@ class PBWT:
                     totLen += k-e 
 
                     e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
-                    
-                    if e1 >= self.N:
-                        e1 = self.N - 1
 
                     if ((x[e1] == 0) and (f1 > 0)) or (f1 == self.M):
                         f1 = g1 - 1
