@@ -146,7 +146,7 @@ class PBWT:
 
                     e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
 
-                    if ((x[e1] == 0) and (f1 > 0)) or (f1 == self.M):
+                    if (f1 == self.M) or ((f1 > 0) and (x[e1] == 0)):
                         f1 = g1 - 1
                         y = self.base_records[:,a[k+1][f1]]
                         while e1 > 0 and x[e1-1] == y[e1-1]:
