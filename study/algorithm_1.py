@@ -21,12 +21,12 @@ def pbwtCursorForwardsA(record, a):
 
 if __name__ == "__main__":
     records = [
-        [0,0,1,0,1],
-        [0,1,1,0,0],
-        [1,0,0,1,1]
+        [0,0,1,0,1,1],
+        [0,1,1,0,0,0],
+        [1,0,0,1,1,0]
     ]
 
-    a = [0,1,2,3,4]
+    a = [0,1,2,3,4,5]
 
     result = []
     for record in records:

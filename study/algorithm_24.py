@@ -120,13 +120,13 @@ class PBWT:
 
 
 if __name__ == "__main__":
-    records = [                     # 5 haps x 3 sites
-        [0,0,1,0,1],
-        [0,1,1,0,0],
-        [1,0,0,1,1]
+    records = [                     # 6 haps x 3 sites
+        [0,0,1,0,1,1],
+        [0,1,1,0,0,0],
+        [1,0,0,1,1,0]
     ]
 
-    order = [1, 2, 0, 3, 4]         # Read from the pbwt file (applied the algorithm 1)
+    order = [5, 1, 2, 0, 3, 4]         # Read from the pbwt file (applied the algorithm 1)
 
     pbwt = PBWT(records, order)
     report = pbwt.matchMaximalWithin()
