@@ -144,8 +144,8 @@ class PBWT:
                     f = f1
                     g = g1
                 else:   ## we have reached a maximum | src/pbwtMatch.c:304 
-                    for i in range(f, g):
-                        report.append([j, a[k][i], e, k])
+                    for i in range(f1, g1+1):
+                        report.append([j, a[k+1][i], e, k])
                     
                     nTot += 1
                     totLen += k-e 
