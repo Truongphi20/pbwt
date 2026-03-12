@@ -122,7 +122,7 @@ class PBWT:
             ## start of match, and pbwt interval as in algorithm 5
             e = 0
             f = 0
-            g = self.M
+            g = self.M - 1
 
             ## next versions of the above, e' etc in algorithm 5
             e1 = 0
@@ -130,8 +130,14 @@ class PBWT:
             g1 = 0
 
             for k in range(self.N):     # use classic FM updates to extend [f,g) interval to next position
-                f1 = (cc[k] + (f - u[k][f]) if x[k] else u[k][f])
-                g1 = (cc[k] + (g - u[k][g]) if x[k] else u[k][g])
+                num_one_f = (f + 1 - u[k][f+1])
+                num_one_f_start = num_one_f if num_one_f > 0 else (num_one_f + 1)
+
+                num_one_g = (g + 1 - u[k][g+1])
+                num_one_g_start = num_one_g if num_one_g > 0 else (num_one_g + 1)
+
+                f1 = (cc[k] + num_one_f_start if x[k] else u[k][f+1]) - 1
+                g1 = (cc[k] + num_one_g_start if x[k] else u[k][g+1]) - 1
 
                 # if the interval is non-zero we can just proceed
                 if g1 > f1:
@@ -184,14 +190,13 @@ if __name__ == "__main__":
         [0,1,1,0,0,0],
         [1,0,0,1,1,0]
     ]
-    base_order = [5, 1, 2, 0, 3, 4]      # Read from the pbwt file (applied the algorithm 1)
+    base_order = [0, 1, 2, 3, 4, 5]      # Read from the pbwt file (applied the algorithm 1)
 
     query_records = [                    # 3 haps x 3 sites
         [1,0,1],
         [1,1,0],
         [0,1,0]
     ]
-    query_order = [2, 0, 1]              # Read from the pbwt file (applied the algorithm 1)
 
     report, avg_best_matches, avg_length = PBWT(base_records, base_order, query_records).matchSequencesIndexed()
 
