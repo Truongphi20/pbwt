@@ -143,45 +143,74 @@ class PBWT:
                 if g1 > f1:
                     f = f1
                     g = g1
-                else:   ## we have reached a maximum | src/pbwtMatch.c:304 
-                    for i in range(f1, g1+1):
-                        report.append([j, a[k+1][i], e, k])
+                else:   ## we have reached a maximum | src/pbwtMatch.c:304
+                    y = self.base_records[:,a[k][f1]]
+                    reported_k = k 
+                    e1 = d[k+1][f1] - 1
+
+                    ## Retrieve from the convergence end
+                    for i in range(k, self.N):
+                        if x[i] == y[i]:
+                            reported_k += 1
                     
-                    nTot += 1
-                    totLen += k-e 
+                    report.append([j, a[k+1][i], e, reported_k])
 
-                    e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
-
+                    ## Extend to the right 
                     if (f1 == self.M) or ((f1 > 0) and (x[e1] == 0)):
-                        f1 = g1 - 1
-                        y = self.base_records[:,a[k+1][f1]]
-                        while e1 > 0 and x[e1-1] == y[e1-1]:
-                            e1 -= 1
-                        
-                        while f1 > 0 and d[k+1][f1] <= e1:
-                            f1 -= 1
-                    elif (f1 < self.M):
-                        g1 = f1 + 1
-                        y = self.base_records[:,a[k+1][f1]]
-                        while e1 > 0 and x[e1-1] == y[e1-1]:
-                            e1 -= 1
-                        
-                        while ((g1 < self.M) and (d[k+1][g1] <= e1)):
+                        while d[k+1][g1+1] > d[k+1][g1]:
                             g1 += 1
+                            e1 = d[k+1][g1+1]
+                    
+                    ## Extend to the left
+                    elif (f1 < self.M):
+                        while d[k+1][f1-1] < d[k+1][f1]:
+                            f1 -= 1
+                            e1 = d[k+1][f1-1]
 
-                    e = e1
-                    f = f1
-                    g = g1
+                    
 
-            ## report the maximal matches to the end
-            last_k = self.N - 1
-            for i in range(f, g):
-                report.append([j, a[last_k][i], e, last_k])
+
+
+
+
+        #             for i in range(f1, g1+1):
+        #                 report.append([j, a[k+1][i], e, k])
+                    
+        #             nTot += 1
+        #             totLen += k-e 
+
+        #             e1 = d[k+1][f1] - 1   # y[f1] and y[f1-1] diverge here, so upper bound for e
+
+        #             if (f1 == self.M) or ((f1 > 0) and (x[e1] == 0)):
+        #                 f1 = g1 - 1
+        #                 y = self.base_records[:,a[k+1][f1]]
+        #                 while e1 > 0 and x[e1-1] == y[e1-1]:
+        #                     e1 -= 1
+                        
+        #                 while f1 > 0 and d[k+1][f1] <= e1:
+        #                     f1 -= 1
+        #             elif (f1 < self.M):
+        #                 g1 = f1 + 1
+        #                 y = self.base_records[:,a[k+1][f1]]
+        #                 while e1 > 0 and x[e1-1] == y[e1-1]:
+        #                     e1 -= 1
+                        
+        #                 while ((g1 < self.M) and (d[k+1][g1] <= e1)):
+        #                     g1 += 1
+
+        #             e = e1
+        #             f = f1
+        #             g = g1
+
+        #     ## report the maximal matches to the end
+        #     last_k = self.N - 1
+        #     for i in range(f, g):
+        #         report.append([j, a[last_k][i], e, last_k])
             
-            nTot += 1
-            totLen += k-e
+        #     nTot += 1
+        #     totLen += k-e
 
-        return report, nTot/len(self.query_records[0]), totLen/nTot
+        # return report, nTot/len(self.query_records[0]), totLen/nTot
 
 
 if __name__ == "__main__":
