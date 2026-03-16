@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "PBWT Explained"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: posts/pbwt-core/index.qmd
+        text: PBWT Core Algorithms
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

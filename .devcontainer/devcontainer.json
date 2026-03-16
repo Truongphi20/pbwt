@@ -8,8 +8,10 @@
     "vscode": {
       "extensions": [
         "ms-vscode.cpptools",
-        "ms-vscode.makefile-tools"
+        "ms-vscode.makefile-tools",
+        "quarto.quarto"
       ]
     }
-  }
+  },
+  "forwardPorts": [4507]
 }

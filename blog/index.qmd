@@ -1,0 +1,21 @@
+---
+title: "Positional Burrows-Wheeler Transform (PBWT)"
+subtitle: "Understanding the core algorithms behind modern haplotype matching"
+author: "Truong Phi"
+date: "2026-03-16"
+---
+
+Welcome to the PBWT blog! This project explores the implementation of algorithms from Richard Durbin's seminal 2014 paper, "Efficient haplotype matching and compression using the Positional Burrows-Wheeler Transform."
+
+### What is PBWT?
+
+The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.
+
+### Algorithms Covered:
+
+1.  **Prefix Sort Order (Algorithm 1)**: Building the basic PBWT order.
+2.  **Forward Cursor & Long Matches (Algorithms 2 & 3)**: Updating the cursor and finding matches within a certain distance.
+3.  **Maximal Matches (Algorithm 4)**: Finding the longest possible matches between all pairs of haplotypes.
+4.  **Indexed Matching (Algorithm 5)**: Fast query-to-reference matching.
+
+[Read the Core Algorithms Post](posts/pbwt-core/index.qmd)
