@@ -310,7 +310,14 @@ int pbwtMain (int argc, char *argv[])
     else if (!strcmp (argv[0], "-readAll") && argc > 1)
       { p = pbwtReadAll (argv[1]) ; argc -= 2 ; argv += 2 ; }
     else if (!strcmp (argv[0], "-readVcfGT") && argc > 1)
-      { if (p) pbwtDestroy (p) ; p = pbwtReadVcfGT (argv[1]) ; argc -= 2 ; argv += 2 ; }
+      { 
+        if (p) 
+          pbwtDestroy (p) ; 
+
+        p = pbwtReadVcfGT (argv[1]) ; 
+        argc -= 2 ; 
+        argv += 2 ; 
+      }
     else if (!strcmp (argv[0], "-readVcfPL") && argc > 1)
       { if (p) pbwtDestroy (p) ; p = pbwtReadVcfPL (argv[1]) ; argc -= 2 ; argv += 2 ; }
     else if (!strcmp (argv[0], "-readMacs") && argc > 1)
