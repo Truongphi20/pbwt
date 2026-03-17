@@ -1,0 +1,13 @@
+---
+title: "Introduction"
+author: "Truong Phi"
+---
+
+### What is PBWT?
+
+The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.
+
+### Purposes
+
+
+### Content covered

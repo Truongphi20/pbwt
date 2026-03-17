@@ -1,0 +1,4 @@
+---
+title: "Algorithm 2: Divergence matrix"
+author: "Truong Phi"
+---

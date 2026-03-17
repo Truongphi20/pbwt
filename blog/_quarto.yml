@@ -3,13 +3,28 @@ project:
   output-dir: _site
 
 website:
-  title: "PBWT Explained"
+  title: "PBWT Blog"
+  favicon: assets/logo.png
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: posts/pbwt-core/index.qmd
-        text: PBWT Core Algorithms
+    logo: assets/logo.png
+    tools:
+      - icon: github
+        href: https://github.com/Truongphi20/pbwt
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - href: posts/introduction.qmd
+        text: Introduction
+      - section: "Core algorithms"
+        contents:
+          - posts/pbwt-core/algorithm_1.qmd
+          - posts/pbwt-core/algorithm_2.qmd
+          - posts/pbwt-core/algorithm_3.qmd
+          - posts/pbwt-core/algorithm_4.qmd
+          - posts/pbwt-core/algorithm_5.qmd
+      - href: posts/summary.qmd
+        text: Summary
 
 format:
   html:
