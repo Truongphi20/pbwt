@@ -61,9 +61,12 @@ class PBWT:
             x.a[u + i] = b[i]
             x.d[u + i] = e[i]
 
+        print(x.d)
+        
         # sentinels
         x.d[0] = k + 2
         x.d[x.M] = k + 2
+
 
 
     def matchMaximalWithin(self):
@@ -123,10 +126,11 @@ if __name__ == "__main__":
     records = [                     # 6 haps x 3 sites
         [0,0,1,0,1,1],
         [0,1,1,0,0,0],
-        [1,0,0,1,1,0]
+        [1,0,0,1,1,0],
+        [0,1,1,0,1,1]
     ]
 
-    order = [5, 1, 2, 0, 3, 4]         # Read from the pbwt file (applied the algorithm 1)
+    order = [0, 1, 2, 3, 4, 5]         # Read from the pbwt file (applied the algorithm 1)
 
     pbwt = PBWT(records, order)
     report = pbwt.matchMaximalWithin()
