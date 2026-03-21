@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.0223934"
-     inkscape:cx="1799.2096"
-     inkscape:cy="1125.3007"
+     inkscape:zoom="1.2880386"
+     inkscape:cx="1912.598"
+     inkscape:cy="1216.1903"
      inkscape:window-width="1850"
      inkscape:window-height="1016"
      inkscape:window-x="70"
@@ -79,7 +79,7 @@
        id="page24"
        margin="0"
        bleed="0"
-       inkscape:export-filename="algorithm_23.png"
+       inkscape:export-filename="algorithm_12.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300" />
   </sodipodi:namedview>
@@ -4203,7 +4203,7 @@
        transform="translate(106.72934,-26.478612)"><tspan
          x="147.73862"
          y="98.072227"
-         id="tspan81">prefix array</tspan></text>
+         id="tspan1">prefix array</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.80267px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#b3b3b3;fill-opacity:1;stroke-width:0.17825"
@@ -4880,7 +4880,7 @@
        transform="translate(114.20749,36.556486)"><tspan
          x="147.73862"
          y="98.072227"
-         id="tspan82">divergence array</tspan></text>
+         id="tspan2">divergence array</tspan></text>
     <path
        style="fill:none;fill-opacity:0.94902;stroke:#008000;stroke-width:0.302;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.302, 0.302;stroke-opacity:1;paint-order:stroke fill markers"
        d="m 115.21596,166.59265 51.05301,-30.06456"
@@ -4913,12 +4913,12 @@
        transform="matrix(0.82712356,0,0,0.82712356,76.805095,45.292594)"><tspan
          x="103.50917"
          y="161.33553"
-         id="tspan83">The index of site starting to match with previous haplotype </tspan><tspan
+         id="tspan3">The index of site starting to match with previous haplotype </tspan><tspan
          x="103.50917"
          y="168.95553"
-         id="tspan87"><tspan
+         id="tspan10"><tspan
    style="font-weight:bold"
-   id="tspan85">from the cursor position</tspan> (k+1 if not match) </tspan></text>
+   id="tspan8">from the cursor position</tspan> (k+1 if not match) </tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10.6811px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.500676"
@@ -4939,10 +4939,10 @@
        transform="matrix(0.56310585,0,0,0.56310585,55.943116,17.950658)"><tspan
          x="105.72205"
          y="39.455795"
-         id="tspan89">(current </tspan><tspan
+         id="tspan12">(current </tspan><tspan
          x="105.72205"
          y="47.075789"
-         id="tspan93">processed site)</tspan></text>
+         id="tspan16">processed site)</tspan></text>
     <rect
        style="fill:none;fill-opacity:1;stroke:#cccccc;stroke-width:0.502646;stroke-dasharray:4.02117, 0.502646;stroke-dashoffset:0;paint-order:stroke fill markers"
        id="rect353"
@@ -9372,56 +9372,56 @@
        transform="matrix(0.63583645,0,0,0.63583645,259.37598,37.735341)"><tspan
          x="429.04575"
          y="118.36737"
-         id="tspan101"><tspan
+         id="tspan23"><tspan
    style="font-weight:bold"
-   id="tspan97">Rule 1</tspan>: Expanding only when tracking width is 1.<tspan
+   id="tspan20">Rule 1</tspan>: Expanding only when tracking width is 1.<tspan
    style="font-weight:bold"
-   id="tspan99">
+   id="tspan22">
 </tspan></tspan><tspan
          x="429.04575"
          y="125.42292"
-         id="tspan107"><tspan
+         id="tspan25"><tspan
            style="font-weight:bold"
-           id="tspan105">
+           id="tspan24">
 </tspan></tspan><tspan
          x="429.04575"
          y="132.47847"
-         id="tspan111"><tspan
+         id="tspan27"><tspan
    style="font-weight:bold"
-   id="tspan109">Rule 2: </tspan>Expansion proceeds to the right, except </tspan><tspan
+   id="tspan26">Rule 2: </tspan>Expansion proceeds to the right, except </tspan><tspan
          x="429.04575"
          y="139.53402"
-         id="tspan118">being the last 0/1 column then to the left.<tspan
+         id="tspan29">being the last 0/1 column then to the left.<tspan
    style="font-weight:bold"
-   id="tspan116">
+   id="tspan28">
 </tspan></tspan><tspan
          x="429.04575"
          y="146.58958"
-         id="tspan124"><tspan
+         id="tspan31"><tspan
            style="font-weight:bold"
-           id="tspan120">
+           id="tspan30">
 </tspan></tspan><tspan
          x="429.04575"
          y="153.64514"
-         id="tspan128"><tspan
+         id="tspan33"><tspan
    style="font-weight:bold"
-   id="tspan126">Rule 3</tspan>: Expansion height is determined by </tspan><tspan
+   id="tspan32">Rule 3</tspan>: Expansion height is determined by </tspan><tspan
          x="429.04575"
          y="160.70069"
-         id="tspan130">divergence values d at site k.
+         id="tspan34">divergence values d at site k.
 </tspan><tspan
          x="429.04575"
          y="167.75625"
-         id="tspan132">
+         id="tspan35">
 </tspan><tspan
          x="429.04575"
          y="174.81181"
-         id="tspan134"><tspan
+         id="tspan37"><tspan
    style="font-weight:bold"
-   id="tspan133">Rule 4</tspan>: Expand while neighboring haplotypes share </tspan><tspan
+   id="tspan36">Rule 4</tspan>: Expand while neighboring haplotypes share </tspan><tspan
          x="429.04575"
          y="181.86737"
-         id="tspan135">match length (d value is less than sentinel).</tspan></text>
+         id="tspan38">match length (d value is less than sentinel).</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.28384px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#a91a85;fill-opacity:1;stroke-width:0.200805"
@@ -9470,27 +9470,27 @@
        transform="matrix(0.63394426,0,0,0.63394426,260.56849,-13.729501)"><tspan
          x="429.04575"
          y="118.36737"
-         id="tspan137"><tspan
+         id="tspan40"><tspan
    style="font-weight:bold"
-   id="tspan136">Rule 1</tspan>: At site k, select haplotypes matching the </tspan><tspan
+   id="tspan39">Rule 1</tspan>: At site k, select haplotypes matching the </tspan><tspan
          x="429.04575"
          y="125.98736"
-         id="tspan138">query allele (0 or 1). 
+         id="tspan41">query allele (0 or 1). 
 </tspan><tspan
          x="429.04575"
          y="133.60735"
-         id="tspan139">
+         id="tspan42">
 </tspan><tspan
          x="429.04575"
          y="141.22735"
-         id="tspan142"><tspan
+         id="tspan45"><tspan
    style="font-weight:bold"
-   id="tspan140">Rule</tspan><tspan
+   id="tspan43">Rule</tspan><tspan
    style="font-weight:bold"
-   id="tspan141"> 2</tspan>: After sorting, restrict to the corresponding </tspan><tspan
+   id="tspan44"> 2</tspan>: After sorting, restrict to the corresponding </tspan><tspan
          x="429.04575"
          y="148.84734"
-         id="tspan143">contiguous block.</tspan></text>
+         id="tspan46">contiguous block.</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.27502px;line-height:1.05;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.247267"
@@ -11199,14 +11199,14 @@
        transform="translate(-16.38739,-0.27841326)"><tspan
          x="508.09418"
          y="66.906418"
-         id="tspan144">roof index of<tspan
+         id="tspan47">roof index of<tspan
    y="66.906418"
-   id="tspan145"> </tspan></tspan><tspan
+   id="tspan48"> </tspan></tspan><tspan
          x="508.09418"
          y="70.547681"
-         id="tspan146">expansion<tspan
+         id="tspan49">expansion<tspan
    y="70.547681"
-   id="tspan147"> </tspan></tspan></text>
+   id="tspan50"> </tspan></tspan></text>
     <path
        style="fill:#000000;fill-opacity:1;stroke:#ab1f87;stroke-width:0.361;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.361, 0.361;stroke-dashoffset:0;stroke-opacity:1"
        d="m 505.89979,84.160043 -5.97791,-12.3353"
@@ -12154,25 +12154,25 @@
        transform="matrix(0.63394426,0,0,0.63394426,-65.40458,240.08557)"><tspan
          x="429.04575"
          y="118.36737"
-         id="tspan151"><tspan
+         id="tspan52"><tspan
    style="font-weight:bold"
-   id="tspan148">Rule 1</tspan>: Scan only within the current allele block </tspan><tspan
+   id="tspan51">Rule 1</tspan>: Scan only within the current allele block </tspan><tspan
          x="429.04575"
          y="125.98736"
-         id="tspan155">(0 or 1). 
+         id="tspan53">(0 or 1). 
 </tspan><tspan
          x="429.04575"
          y="133.60735"
-         id="tspan156">
+         id="tspan54">
 </tspan><tspan
          x="429.04575"
          y="141.22735"
-         id="tspan160"><tspan
+         id="tspan59"><tspan
    style="font-weight:bold"
-   id="tspan158">Rule 2</tspan>:  Continue while d does not increase </tspan><tspan
+   id="tspan58">Rule 2</tspan>:  Continue while d does not increase </tspan><tspan
          x="429.04575"
          y="148.84734"
-         id="tspan162">(d[next] &lt;= d[current]).</tspan></text>
+         id="tspan67">(d[next] &lt;= d[current]).</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.27502px;line-height:1.05;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.247267"
@@ -14331,12 +14331,12 @@
        id="path709"
        sodipodi:nodetypes="cc" />
     <rect
-       style="fill:#f9f9f9;stroke:none;stroke-width:1.12026;paint-order:stroke fill markers"
+       style="fill:#f9f9f9;stroke:none;stroke-width:1.05003;paint-order:stroke fill markers"
        id="rect715"
        width="60.297646"
-       height="21.996996"
+       height="19.325487"
        x="493.50906"
-       y="267.32822" />
+       y="268.91574" />
     <path
        style="fill:#ff5656;fill-opacity:0.290196;stroke:#ff5555;stroke-width:1.12026;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ArrowWide)"
        d="m 520.34395,255.23207 v 10.44968"
@@ -14361,12 +14361,12 @@
        transform="matrix(0.71310827,0,0,0.71310827,204.72153,66.884732)"><tspan
          x="482.38113"
          y="270.1749"
-         id="tspan166">Determine the<tspan
+         id="tspan69">Determine the<tspan
    y="270.1749"
-   id="tspan168"> </tspan></tspan><tspan
+   id="tspan74"> </tspan></tspan><tspan
          x="482.38113"
          y="277.79488"
-         id="tspan170">threshold for d value</tspan></text>
+         id="tspan76">threshold for d value</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;white-space:pre;inline-size:53.2359;display:inline;stroke-width:0.264583"
@@ -14376,11 +14376,11 @@
        transform="matrix(0.71310827,0,0,0.71310827,204.72153,103.00697)"><tspan
          x="482.38113"
          y="270.1749"
-         id="tspan172">Determine 
+         id="tspan78">Determine 
 </tspan><tspan
          x="482.38113"
          y="277.79488"
-         id="tspan174">the inteval blocks</tspan></text>
+         id="tspan79">the inteval blocks</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.14137px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#a91a85;fill-opacity:1;stroke-width:0.194127"
@@ -14422,7 +14422,7 @@
        transform="matrix(0.81872301,0,0,0.81872301,115.94001,64.622909)"><tspan
          x="433.48663"
          y="374.98407"
-         id="tspan175">Finding all matches longer than a minimum length L</tspan></text>
+         id="tspan80">Finding all matches longer than a minimum length L</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.264583"
@@ -14458,7 +14458,7 @@
          y="202.02194">Report matches of external query haplotype</tspan></text>
     <g
        id="g715"
-       transform="translate(29.278541,2.3788814)">
+       transform="translate(29.278541,3.9663815)">
       <g
          id="g714"
          transform="matrix(0.8552361,0,0,0.8552361,85.047553,45.167705)">
@@ -15004,134 +15004,6 @@
                  style="stroke:none"
                  d="m 2.9375,-6.375 c 0,-0.25 0,-0.265625 -0.234375,-0.265625 C 2.078125,-6 1.203125,-6 0.890625,-6 v 0.3125 c 0.203125,0 0.78125,0 1.296875,-0.265625 v 5.171875 c 0,0.359375 -0.03125,0.46875 -0.921875,0.46875 h -0.3125 V 0 c 0.34375,-0.03125 1.203125,-0.03125 1.609375,-0.03125 0.390625,0 1.265625,0 1.609375,0.03125 v -0.3125 h -0.3125 c -0.90625,0 -0.921875,-0.109375 -0.921875,-0.46875 z m 0,0"
                  id="id-2163a881-5189-4d6d-9df4-90197c76bc96" />
-            </g>
-          </g>
-        </g>
-      </g>
-      <g
-         transform="matrix(0.39083263,0,0,0.39083263,487.21163,282.96781)"
-         ns22:version="1.10.0"
-         ns22:texconverter="pdflatex"
-         ns22:pdfconverter="inkscape"
-         ns22:text="$$\n         \\Leftrightarrow d \\le 1 \n$$"
-         ns22:preamble="/home/truongphi/.config/inkscape/extensions/textext/default_packages.tex"
-         ns22:scale="1.2953978455271373"
-         ns22:alignment="middle center"
-         ns22:stroke-to-path="0"
-         ns22:inkscapeversion="1.4.3"
-         ns22:jacobian_sqrt="0.456988"
-         id="g531">
-        <defs
-           id="id-8eb99e0d-f92a-437f-8e99-e2b2f3e05604">
-          <g
-             id="id-07ab9176-9132-443d-a960-6d3c16911873">
-            <symbol
-               overflow="visible"
-               id="id-c3d8e6ea-138b-4540-881f-15926bf93aff">
-              <path
-                 style="stroke:none"
-                 d=""
-                 id="id-2a126638-0d5f-4b73-bfd9-5d8c81557f8d" />
-            </symbol>
-            <symbol
-               overflow="visible"
-               id="id-571a06b7-0ae4-4e4f-8213-276a57457bfa">
-              <path
-                 style="stroke:none"
-                 d="m 2.53125,-3.65625 c 0.5625,-0.65625 0.875,-1.375 0.875,-1.453125 0,-0.125 -0.109375,-0.125 -0.203125,-0.125 -0.15625,0 -0.15625,0.015625 -0.25,0.203125 C 2.546875,-4.109375 1.8125,-3.1875 0.515625,-2.625 0.375,-2.578125 0.34375,-2.5625 0.34375,-2.5 c 0,0.03125 0,0.046875 0,0.0625 C 0.375,-2.40625 0.375,-2.40625 0.578125,-2.3125 1.671875,-1.859375 2.5,-1 3,0.15625 3.046875,0.234375 3.078125,0.25 3.203125,0.25 c 0.09375,0 0.203125,0 0.203125,-0.125 0,-0.078125 -0.3125,-0.796875 -0.875,-1.453125 H 7.421875 C 6.859375,-0.671875 6.5625,0.046875 6.5625,0.125 6.5625,0.25 6.671875,0.25 6.765625,0.25 6.90625,0.25 6.90625,0.234375 7,0.046875 7.40625,-0.875 8.140625,-1.796875 9.453125,-2.359375 9.59375,-2.40625 9.625,-2.421875 9.625,-2.5 c 0,-0.015625 0,-0.03125 -0.015625,-0.046875 C 9.59375,-2.578125 9.578125,-2.578125 9.375,-2.671875 8.28125,-3.125 7.46875,-3.984375 6.953125,-5.140625 6.921875,-5.21875 6.875,-5.234375 6.765625,-5.234375 c -0.09375,0 -0.203125,0 -0.203125,0.125 0,0.078125 0.296875,0.796875 0.859375,1.453125 z m -0.390625,1.9375 C 1.84375,-2.015625 1.5,-2.25 1.09375,-2.5 1.640625,-2.8125 1.9375,-3.0625 2.140625,-3.265625 H 7.8125 C 8.109375,-2.96875 8.453125,-2.734375 8.859375,-2.5 8.3125,-2.171875 8.015625,-1.921875 7.8125,-1.71875 Z m 0,0"
-                 id="id-db0ea2c4-4dfd-45fc-a712-f5f0fbfdc77c" />
-            </symbol>
-            <symbol
-               overflow="visible"
-               id="id-d26033bf-93ba-4751-8e5f-11e9d044052d">
-              <path
-                 style="stroke:none"
-                 d="m 6.734375,-5.921875 c 0.109375,-0.046875 0.1875,-0.09375 0.1875,-0.21875 0,-0.109375 -0.078125,-0.203125 -0.203125,-0.203125 -0.046875,0 -0.140625,0.046875 -0.171875,0.0625 L 1.03125,-3.671875 c -0.171875,0.078125 -0.203125,0.140625 -0.203125,0.21875 0,0.09375 0.0625,0.15625 0.203125,0.21875 l 5.515625,2.59375 C 6.671875,-0.5625 6.6875,-0.5625 6.71875,-0.5625 c 0.109375,0 0.203125,-0.09375 0.203125,-0.203125 C 6.921875,-0.859375 6.875,-0.921875 6.703125,-1 L 1.5,-3.453125 Z M 6.5625,1.359375 c 0.171875,0 0.359375,0 0.359375,-0.1875 0,-0.203125 -0.21875,-0.203125 -0.359375,-0.203125 h -5.375 c -0.15625,0 -0.359375,0 -0.359375,0.203125 0,0.1875 0.171875,0.1875 0.34375,0.1875 z m 0,0"
-                 id="id-d31cc553-e0af-4a59-86f9-61da6cb8029b" />
-            </symbol>
-            <symbol
-               overflow="visible"
-               id="id-71630a44-0bf8-45c3-9522-9bbf7571c968">
-              <path
-                 style="stroke:none"
-                 d=""
-                 id="id-7f5f3ccf-655f-4943-bf26-40f6f3613a13" />
-            </symbol>
-            <symbol
-               overflow="visible"
-               id="id-618ba9aa-cc09-4f84-a5d6-3658acbaff85">
-              <path
-                 style="stroke:none"
-                 d="m 5.140625,-6.8125 c 0,0 0,-0.109375 -0.125,-0.109375 -0.15625,0 -1.09375,0.09375 -1.265625,0.109375 -0.078125,0.015625 -0.140625,0.0625 -0.140625,0.1875 0,0.125 0.09375,0.125 0.234375,0.125 0.484375,0 0.5,0.0625 0.5,0.171875 L 4.3125,-6.125 3.71875,-3.765625 C 3.53125,-4.140625 3.25,-4.40625 2.796875,-4.40625 c -1.15625,0 -2.390625,1.46875 -2.390625,2.921875 0,0.9375 0.546875,1.59375 1.3125,1.59375 0.203125,0 0.703125,-0.046875 1.296875,-0.75 0.078125,0.421875 0.4375,0.75 0.90625,0.75 0.359375,0 0.578125,-0.234375 0.75,-0.546875 0.15625,-0.359375 0.296875,-0.96875 0.296875,-0.984375 0,-0.109375 -0.09375,-0.109375 -0.125,-0.109375 -0.09375,0 -0.109375,0.046875 -0.140625,0.1875 -0.171875,0.640625 -0.34375,1.234375 -0.75,1.234375 -0.28125,0 -0.296875,-0.265625 -0.296875,-0.453125 0,-0.25 0.015625,-0.3125 0.046875,-0.484375 z m -2.0625,5.625 C 3.015625,-1 3.015625,-0.984375 2.875,-0.8125 2.4375,-0.265625 2.03125,-0.109375 1.75,-0.109375 c -0.5,0 -0.640625,-0.546875 -0.640625,-0.9375 0,-0.5 0.3125,-1.71875 0.546875,-2.1875 0.3125,-0.578125 0.75,-0.953125 1.15625,-0.953125 0.640625,0 0.78125,0.8125 0.78125,0.875 0,0.0625 -0.015625,0.125 -0.03125,0.171875 z m 0,0"
-                 id="id-f5015eaa-2d06-44c0-b290-cbf24d7ed525" />
-            </symbol>
-            <symbol
-               overflow="visible"
-               id="id-28767368-6d53-4de8-b19e-751f1d888288">
-              <path
-                 style="stroke:none"
-                 d=""
-                 id="id-b814ccb3-25aa-4fb3-a75a-1363bf7b0c56" />
-            </symbol>
-            <symbol
-               overflow="visible"
-               id="id-32806bd9-0859-41fa-a23d-bead6af2c003">
-              <path
-                 style="stroke:none"
-                 d="m 2.9375,-6.375 c 0,-0.25 0,-0.265625 -0.234375,-0.265625 C 2.078125,-6 1.203125,-6 0.890625,-6 v 0.3125 c 0.203125,0 0.78125,0 1.296875,-0.265625 v 5.171875 c 0,0.359375 -0.03125,0.46875 -0.921875,0.46875 h -0.3125 V 0 c 0.34375,-0.03125 1.203125,-0.03125 1.609375,-0.03125 0.390625,0 1.265625,0 1.609375,0.03125 v -0.3125 h -0.3125 c -0.90625,0 -0.921875,-0.109375 -0.921875,-0.46875 z m 0,0"
-                 id="id-928906d2-08dd-4a8b-8e63-e0adc3ac2a04" />
-            </symbol>
-          </g>
-        </defs>
-        <g
-           id="id-64a4ca12-4ac7-44eb-b777-0c2f36526c3f"
-           transform="translate(-287.878,-139.798)">
-          <g
-             style="fill:#000000;fill-opacity:1"
-             id="id-6951f806-afc2-42d5-9323-64f8310bd9a3">
-            <g
-               transform="translate(287.534,146.72)"
-               id="g710">
-              <path
-                 style="stroke:none"
-                 d="m 2.53125,-3.65625 c 0.5625,-0.65625 0.875,-1.375 0.875,-1.453125 0,-0.125 -0.109375,-0.125 -0.203125,-0.125 -0.15625,0 -0.15625,0.015625 -0.25,0.203125 C 2.546875,-4.109375 1.8125,-3.1875 0.515625,-2.625 0.375,-2.578125 0.34375,-2.5625 0.34375,-2.5 c 0,0.03125 0,0.046875 0,0.0625 C 0.375,-2.40625 0.375,-2.40625 0.578125,-2.3125 1.671875,-1.859375 2.5,-1 3,0.15625 3.046875,0.234375 3.078125,0.25 3.203125,0.25 c 0.09375,0 0.203125,0 0.203125,-0.125 0,-0.078125 -0.3125,-0.796875 -0.875,-1.453125 H 7.421875 C 6.859375,-0.671875 6.5625,0.046875 6.5625,0.125 6.5625,0.25 6.671875,0.25 6.765625,0.25 6.90625,0.25 6.90625,0.234375 7,0.046875 7.40625,-0.875 8.140625,-1.796875 9.453125,-2.359375 9.59375,-2.40625 9.625,-2.421875 9.625,-2.5 c 0,-0.015625 0,-0.03125 -0.015625,-0.046875 C 9.59375,-2.578125 9.578125,-2.578125 9.375,-2.671875 8.28125,-3.125 7.46875,-3.984375 6.953125,-5.140625 6.921875,-5.21875 6.875,-5.234375 6.765625,-5.234375 c -0.09375,0 -0.203125,0 -0.203125,0.125 0,0.078125 0.296875,0.796875 0.859375,1.453125 z m -0.390625,1.9375 C 1.84375,-2.015625 1.5,-2.25 1.09375,-2.5 1.640625,-2.8125 1.9375,-3.0625 2.140625,-3.265625 H 7.8125 C 8.109375,-2.96875 8.453125,-2.734375 8.859375,-2.5 8.3125,-2.171875 8.015625,-1.921875 7.8125,-1.71875 Z m 0,0"
-                 id="id-70311aa2-3a83-4974-b433-503af6cb85d2" />
-            </g>
-          </g>
-          <g
-             style="fill:#000000;fill-opacity:1"
-             id="id-d3c9024b-22a1-4c50-976f-515de9bb883b">
-            <g
-               transform="translate(300.264,146.72)"
-               id="g711">
-              <path
-                 style="stroke:none"
-                 d="m 5.140625,-6.8125 c 0,0 0,-0.109375 -0.125,-0.109375 -0.15625,0 -1.09375,0.09375 -1.265625,0.109375 -0.078125,0.015625 -0.140625,0.0625 -0.140625,0.1875 0,0.125 0.09375,0.125 0.234375,0.125 0.484375,0 0.5,0.0625 0.5,0.171875 L 4.3125,-6.125 3.71875,-3.765625 C 3.53125,-4.140625 3.25,-4.40625 2.796875,-4.40625 c -1.15625,0 -2.390625,1.46875 -2.390625,2.921875 0,0.9375 0.546875,1.59375 1.3125,1.59375 0.203125,0 0.703125,-0.046875 1.296875,-0.75 0.078125,0.421875 0.4375,0.75 0.90625,0.75 0.359375,0 0.578125,-0.234375 0.75,-0.546875 0.15625,-0.359375 0.296875,-0.96875 0.296875,-0.984375 0,-0.109375 -0.09375,-0.109375 -0.125,-0.109375 -0.09375,0 -0.109375,0.046875 -0.140625,0.1875 -0.171875,0.640625 -0.34375,1.234375 -0.75,1.234375 -0.28125,0 -0.296875,-0.265625 -0.296875,-0.453125 0,-0.25 0.015625,-0.3125 0.046875,-0.484375 z m -2.0625,5.625 C 3.015625,-1 3.015625,-0.984375 2.875,-0.8125 2.4375,-0.265625 2.03125,-0.109375 1.75,-0.109375 c -0.5,0 -0.640625,-0.546875 -0.640625,-0.9375 0,-0.5 0.3125,-1.71875 0.546875,-2.1875 0.3125,-0.578125 0.75,-0.953125 1.15625,-0.953125 0.640625,0 0.78125,0.8125 0.78125,0.875 0,0.0625 -0.015625,0.125 -0.03125,0.171875 z m 0,0"
-                 id="id-e7511e4f-68a9-4a92-bbc1-1570a1619433" />
-            </g>
-          </g>
-          <g
-             style="fill:#000000;fill-opacity:1"
-             id="id-93433741-1d77-4b9c-bc87-de5f68654d45">
-            <g
-               transform="translate(308.217,146.72)"
-               id="g712">
-              <path
-                 style="stroke:none"
-                 d="m 6.734375,-5.921875 c 0.109375,-0.046875 0.1875,-0.09375 0.1875,-0.21875 0,-0.109375 -0.078125,-0.203125 -0.203125,-0.203125 -0.046875,0 -0.140625,0.046875 -0.171875,0.0625 L 1.03125,-3.671875 c -0.171875,0.078125 -0.203125,0.140625 -0.203125,0.21875 0,0.09375 0.0625,0.15625 0.203125,0.21875 l 5.515625,2.59375 C 6.671875,-0.5625 6.6875,-0.5625 6.71875,-0.5625 c 0.109375,0 0.203125,-0.09375 0.203125,-0.203125 C 6.921875,-0.859375 6.875,-0.921875 6.703125,-1 L 1.5,-3.453125 Z M 6.5625,1.359375 c 0.171875,0 0.359375,0 0.359375,-0.1875 0,-0.203125 -0.21875,-0.203125 -0.359375,-0.203125 h -5.375 c -0.15625,0 -0.359375,0 -0.359375,0.203125 0,0.1875 0.171875,0.1875 0.34375,0.1875 z m 0,0"
-                 id="id-e929de8e-38a3-48b9-9950-9f8503022e0d" />
-            </g>
-          </g>
-          <g
-             style="fill:#000000;fill-opacity:1"
-             id="id-34d3fab5-2277-4cbb-bbd4-72a7c4de8453">
-            <g
-               transform="translate(318.733,146.72)"
-               id="g713">
-              <path
-                 style="stroke:none"
-                 d="m 2.9375,-6.375 c 0,-0.25 0,-0.265625 -0.234375,-0.265625 C 2.078125,-6 1.203125,-6 0.890625,-6 v 0.3125 c 0.203125,0 0.78125,0 1.296875,-0.265625 v 5.171875 c 0,0.359375 -0.03125,0.46875 -0.921875,0.46875 h -0.3125 V 0 c 0.34375,-0.03125 1.203125,-0.03125 1.609375,-0.03125 0.390625,0 1.265625,0 1.609375,0.03125 v -0.3125 h -0.3125 c -0.90625,0 -0.921875,-0.109375 -0.921875,-0.46875 z m 0,0"
-                 id="id-3b552fb3-50b0-42b1-99e8-547b88872e64" />
             </g>
           </g>
         </g>
