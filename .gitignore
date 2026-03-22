@@ -28,3 +28,7 @@ build
 
 # Test
 /data.*
+
+# Blog
+blog/_site
+blog/.quarto
