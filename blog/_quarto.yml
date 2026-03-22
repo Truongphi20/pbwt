@@ -3,31 +3,45 @@ project:
   output-dir: _site
 
 website:
+  page-navigation: true
   title: "PBWT Blog"
+  description: Clearly illustrate PBWT algorithms
+  repo-url: https://github.com/Truongphi20/pbwt
   favicon: assets/logo.png
-  navbar:
+  open-graph: true
+    
+  sidebar:
     logo: assets/logo.png
-    tools:
+    style: "docked"
+    tools: 
       - icon: github
         href: https://github.com/Truongphi20/pbwt
-  sidebar:
-    style: "docked"
+        text: "GitHub repo"
+      - icon: person-fill
+        text: "Phi Nguyen Truong"
+        href: https://truongphi20.github.io/
     search: true
+    collapse-level: 1
     contents:
       - href: posts/introduction.qmd
         text: Introduction
       - section: "Core algorithms"
         contents:
-          - posts/pbwt-core/algorithm_1.qmd
-          - posts/pbwt-core/algorithm_2.qmd
-          - posts/pbwt-core/algorithm_3.qmd
-          - posts/pbwt-core/algorithm_4.qmd
-          - posts/pbwt-core/algorithm_5.qmd
+          - posts/pbwt-core/algorithm_12.qmd
+          - posts/pbwt-core/algorithm_23.qmd
+          - posts/pbwt-core/algorithm_24.qmd
+          - posts/pbwt-core/algorithm_25.qmd
       - href: posts/summary.qmd
         text: Summary
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      light: [cosmo, assets/theme.scss]
+      dark: [cosmo, assets/theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
     toc: true
+
+freeze: auto

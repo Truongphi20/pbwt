@@ -1,0 +1,14 @@
+---
+title: "Algorithm 1&2: Build the prefix array and divergence array"
+author: "Truong Phi"
+---
+
+## Introduction
+
+
+
+## Description
+
+
+
+## Comments
