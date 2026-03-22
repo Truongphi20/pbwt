@@ -28,14 +28,16 @@ In the example shown in the figure:
 ### Identifying Interval Blocks
 Algorithm 3 identifies "interval blocks"—contiguous ranges of haplotypes in the sorted prefix array that share a match. A block $[i, j]$ is formed if for all $m$ from $i+1$ to $j$, the divergence value $d[m]$ is less than or equal to the threshold.
 
-- **Block 1**: At $k=2$, the divergence value $d[2] = 1$ satisfies the threshold ($1 \le 1$). This identifies a match between haplotypes at indices 1 and 2 in the sorted array (haplotypes 1 and 2).
-- **Block 2**: The divergence values $d[4] = 0$ and $d[5] = 1$ both satisfy the threshold. This identifies a match block spanning indices 3, 4, and 5 (haplotypes 0, 3, and 4).
+- **Block 1**: At $k=2$, the divergence value $d[2] = 1$ satisfies the threshold ($1 \le 1$). This identifies a match of haplotype at the index 2 (hap 2) to index 1 (hap 1) from site 1 (determined by the d value) to k.
+- **Block 2**: The divergence values $d[4] = 0$ and $d[5] = 1$ both satisfy the threshold. This identifies a match block spanning indices 3, 4, and 5 (haplotypes 0, 3, and 4): 
+    - The hap 3 matches the hap 0 from site 0 to k.
+    - The hap 5 matches the hap 3 from site 1 to k 
 
 ### Reporting Matches
 When a block is identified, Algorithm 3 reports all pairs within that block as having a match of at least length $L$. In the case of Block 2, this would include matches between (0, 3), (3, 4), and (0, 4).
 
-## Comments
+## Conclusion
 
 - **Efficiency**: Algorithm 3 runs in $O(MN)$ time to find all matches, which is remarkably efficient given that there could be $O(M^2N)$ potential matches in total.
-- **Nested Blocks**: The algorithm naturally handles nested matches and overlapping segments by processing the divergence array linearly at each site.
+- **Nested Blocks**: The algorithm naturally handles nested matches and overlapping segments by processing the divergence array linearly at each site. 
 - **Applications**: This approach is widely used in genetic genealogy and population genetics to find shared ancestry and identify regions of the genome that are conserved within a population.
