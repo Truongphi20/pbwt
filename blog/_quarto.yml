@@ -43,5 +43,7 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: true
+    grid:
+      sidebar-width: 400px
 
 freeze: auto
