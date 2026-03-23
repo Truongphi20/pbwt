@@ -9,7 +9,7 @@ Building upon the prefix and divergence arrays constructed in Algorithm 2, Algor
 
 ## Description
 
-![Algorithm 2 & 3: Finding all matches longer than a minimum length $L$](../../assets/algorithm_23.png){#fig-algorithm23}
+![Algorithm 2&3: Finding all matches longer than a minimum length $L$](../../assets/algorithm_23.png){#algorithm23}
 
 The figure above demonstrates how Algorithm 3 uses the divergence array to find matches that meet the length threshold $L$ at a given site $k$.
 
