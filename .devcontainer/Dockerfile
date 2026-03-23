@@ -67,9 +67,9 @@ RUN sudo apt-get update && sudo apt-get install -y \
     && sudo rm -rf /var/lib/apt/lists/*
 
 # Install quarto
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb \
-    && dpkg -i quarto-1.6.39-linux-amd64.deb \
-    && rm quarto-1.6.39-linux-amd64.deb
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.36/quarto-1.9.36-linux-amd64.deb \
+    && dpkg -i quarto-1.9.36-linux-amd64.deb \
+    && rm quarto-1.9.36-linux-amd64.deb
 
 RUN python3 -m pip install jupyter numpy pandas
 
