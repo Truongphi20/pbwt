@@ -1,13 +1,49 @@
 ---
-title: "Algorithm 2&4: Report longest matches"
+title: "Algorithm 2&4: Report set maximal matches"
 author: "Truong Phi"
 ---
 
 ## Introduction
 
+While Algorithm 3 finds all matches longer than a fixed threshold $L$, **Algorithm 4** focuses on identifying **set maximal matches**. A match between two haplotypes is "set maximal" if it cannot be extended further in either direction (to the left or right) without encountering a mismatch, and it is not contained within a longer match involving the same haplotype.
+
+This algorithm is particularly powerful because it identifies the most significant shared segments for every haplotype in the dataset, effectively capturing the "longest" relationships at each position.
 
 ## Description
 
+![Algorithm 2&4: Reporting set maximal matches](../../assets/algorithm_24.png){#algorithm24}
 
+The figure above demonstrates how Algorithm 4 uses the **divergence array ($d$)** to control scan boundaries and identify these maximal matches efficiently at a specific site $k$.
 
-## Comments
+### Set Maximal Matches at Site $k$
+At any given site $k$, we want to find haplotypes that share a match ending at $k$ which is maximal. In the prefix array, haplotypes are sorted by their reverse prefixes, so those with long matches ending at $k$ will be adjacent.
+
+In the example:
+
+- **Current site**: $k = 2$.
+- **Query haplotype**: The haplotype at position 1 in the sorted order (index 1, marked in blue).
+- **Goal**: Find all other haplotypes that share a maximal match with our query.
+
+### The Scanning Rules
+To find the range of haplotypes sharing a maximal match, Algorithm 4 scans upwards (left) and downwards (right) from the query position in the prefix array. The scan is governed by two critical rules:
+
+1.  **Rule 1: Allele Block Constraint**
+    Scan only within the current **allele block**. If our query haplotype has a `0` at site $k$, we only scan other haplotypes that also have a `0` at site $k$. In the figure, this limits the scan to positions 0, 1, and 2.
+2.  **Rule 2: Divergence Control**
+    Continue the scan only as long as the divergence value $d$ does not increase: $d[next] \le d[current]$. Since $d[i]$ represents the site where the match between haplotype $i$ and $i-1$ begins, a non-increasing $d$ ensures the match length is at least as long as the initial match being tracked.
+
+### Walking through the example
+
+For the query haplotype at position $i=1$:
+
+- **Divergence values at $k=2$**: $d = [3, 2, 1, 3, 0, 1]$.
+- **Left Scan**: We look at position 0. $d[1] = 2$, but $d[0] = 3$. Since $3 > 2$, Rule 2 is violated, and the left scan stops.
+- **Right Scan**: We look at position 2. $d[2] = 1$. Since $1 \le d[1]$ (i.e., $1 \le 2$), Rule 2 is satisfied, and the match extends to the haplotype at position 2. If we tried to go further to position 3, we would hit a `1` at site $k$, violating Rule 1.
+
+The resulting **current match interval** (highlighted in green) identifies the set of haplotypes that share this maximal segment.
+
+## Conclusion
+
+- **Efficiency**: Like the previous algorithms, Algorithm 4 runs in $O(MN)$ time, making it feasible to find all set maximal matches across millions of haplotypes.
+- **Data Compression**: Set maximal matches provide a compact way to represent the most important identity-by-descent (IBD) relationships in a population.
+- **Selection and Sensitivity**: By focusing on maximal matches rather than all matches above a threshold, Algorithm 4 reduces redundancy while maintaining high sensitivity for detecting shared ancestry.
