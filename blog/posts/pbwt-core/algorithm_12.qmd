@@ -12,7 +12,7 @@ At its core, PBWT relies on sorting haplotypes at each site to reveal local simi
 
 ## Description
 
-![Algorithm 1 & 2: Building the prefix array and divergence array](../../assets/algorithm_12.png){#algorithm12}
+![Algorithm 1&2: Building the prefix array and divergence array](../../assets/algorithm_12.png){#algorithm12}
 
 The figure above illustrates the step-by-step process of Algorithms 1 and 2 to construct the **prefix array ($a$)** and the **divergence array ($d$)** from a set of haplotypes.
 
