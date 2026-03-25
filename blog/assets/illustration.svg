@@ -28,8 +28,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.4776773"
-     inkscape:cx="10.489435"
-     inkscape:cy="1252.9799"
+     inkscape:cx="1783.204"
+     inkscape:cy="498.41735"
      inkscape:window-width="1850"
      inkscape:window-height="1016"
      inkscape:window-x="70"
@@ -840,6 +840,13 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#e5f6e4;fill-opacity:1;stroke:none;stroke-width:0.361686;-inkscape-stroke:none;paint-order:stroke fill markers"
+       id="rect1"
+       width="47.27013"
+       height="46.016754"
+       x="461.42093"
+       y="8.2364626" />
     <rect
        style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:0.779754;stroke-dasharray:6.23803, 0.779754;stroke-dashoffset:0;paint-order:stroke fill markers"
        id="rect352"
@@ -4297,7 +4304,7 @@
        transform="translate(106.72934,-26.478612)"><tspan
          x="147.73862"
          y="98.072227"
-         id="tspan1">prefix array</tspan></text>
+         id="tspan81">prefix array</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.80267px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke-width:0.17825"
@@ -4974,7 +4981,7 @@
        transform="translate(114.20749,36.556486)"><tspan
          x="147.73862"
          y="98.072227"
-         id="tspan2">divergence array</tspan></text>
+         id="tspan82">divergence array</tspan></text>
     <path
        style="fill:none;fill-opacity:0.94902;stroke:#008000;stroke-width:0.302;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.302, 0.302;stroke-opacity:1;paint-order:stroke fill markers"
        d="m 115.21596,166.59265 51.05301,-30.06456"
@@ -5007,12 +5014,12 @@
        transform="matrix(0.82712356,0,0,0.82712356,76.805095,45.292594)"><tspan
          x="103.50917"
          y="161.33553"
-         id="tspan3">The index of site starting to match with previous haplotype </tspan><tspan
+         id="tspan83">The index of site starting to match with previous haplotype </tspan><tspan
          x="103.50917"
          y="168.95553"
-         id="tspan10"><tspan
+         id="tspan87"><tspan
    style="font-weight:bold"
-   id="tspan8">from the cursor position</tspan> (k+1 if not match) </tspan></text>
+   id="tspan85">from the cursor position</tspan> (k+1 if not match) </tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10.6811px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.500676"
@@ -5033,10 +5040,10 @@
        transform="matrix(0.56310585,0,0,0.56310585,55.943116,17.950658)"><tspan
          x="105.72205"
          y="39.455795"
-         id="tspan12">(current </tspan><tspan
+         id="tspan89">(current </tspan><tspan
          x="105.72205"
          y="47.075789"
-         id="tspan16">processed site)</tspan></text>
+         id="tspan93">processed site)</tspan></text>
     <rect
        style="fill:none;fill-opacity:1;stroke:#cccccc;stroke-width:0.502646;stroke-dasharray:4.02117, 0.502646;stroke-dashoffset:0;paint-order:stroke fill markers"
        id="rect353"
@@ -8866,15 +8873,15 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:5.22528px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.244934"
-       x="484.33005"
-       y="51.460976"
+       style="font-size:4.64901px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.217921"
+       x="486.39313"
+       y="51.043404"
        id="text493"><tspan
          sodipodi:role="line"
          id="tspan493"
-         style="stroke-width:0.244934"
-         x="484.33005"
-         y="51.460976">query haplotypes</tspan></text>
+         style="stroke-width:0.217921"
+         x="486.39313"
+         y="51.043404">query haplotypes</tspan></text>
     <g
        transform="matrix(0.70396133,0,0,0.70396133,476.29573,10.664246)"
        ns22:version="1.10.0"
@@ -9466,56 +9473,56 @@
        transform="matrix(0.63583645,0,0,0.63583645,259.37598,37.735341)"><tspan
          x="429.04575"
          y="118.36737"
-         id="tspan23"><tspan
+         id="tspan101"><tspan
    style="font-weight:bold"
-   id="tspan20">Rule 1</tspan>: Expanding only when tracking width is 1.<tspan
+   id="tspan97">Rule 1</tspan>: Expanding only when tracking width is 1.<tspan
    style="font-weight:bold"
-   id="tspan22">
+   id="tspan99">
 </tspan></tspan><tspan
          x="429.04575"
          y="125.42292"
-         id="tspan25"><tspan
+         id="tspan107"><tspan
            style="font-weight:bold"
-           id="tspan24">
+           id="tspan105">
 </tspan></tspan><tspan
          x="429.04575"
          y="132.47847"
-         id="tspan27"><tspan
+         id="tspan111"><tspan
    style="font-weight:bold"
-   id="tspan26">Rule 2: </tspan>Expansion proceeds to the right, except </tspan><tspan
+   id="tspan109">Rule 2: </tspan>Expansion proceeds to the right, except </tspan><tspan
          x="429.04575"
          y="139.53402"
-         id="tspan29">being the last 0/1 column then to the left.<tspan
+         id="tspan118">being the last 0/1 column then to the left.<tspan
    style="font-weight:bold"
-   id="tspan28">
+   id="tspan116">
 </tspan></tspan><tspan
          x="429.04575"
          y="146.58958"
-         id="tspan31"><tspan
+         id="tspan124"><tspan
            style="font-weight:bold"
-           id="tspan30">
+           id="tspan120">
 </tspan></tspan><tspan
          x="429.04575"
          y="153.64514"
-         id="tspan33"><tspan
+         id="tspan128"><tspan
    style="font-weight:bold"
-   id="tspan32">Rule 3</tspan>: Expansion height is determined by </tspan><tspan
+   id="tspan126">Rule 3</tspan>: Expansion height is determined by </tspan><tspan
          x="429.04575"
          y="160.70069"
-         id="tspan34">divergence values d at site k.
+         id="tspan130">divergence values d at site k.
 </tspan><tspan
          x="429.04575"
          y="167.75625"
-         id="tspan35">
+         id="tspan132">
 </tspan><tspan
          x="429.04575"
          y="174.81181"
-         id="tspan37"><tspan
+         id="tspan134"><tspan
    style="font-weight:bold"
-   id="tspan36">Rule 4</tspan>: Expand while neighboring haplotypes share </tspan><tspan
+   id="tspan133">Rule 4</tspan>: Expand while neighboring haplotypes share </tspan><tspan
          x="429.04575"
          y="181.86737"
-         id="tspan38">match length (d value is less than sentinel).</tspan></text>
+         id="tspan135">match length (d value is less than sentinel).</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.28384px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#a91a85;fill-opacity:1;stroke-width:0.200805"
@@ -9564,27 +9571,27 @@
        transform="matrix(0.63394426,0,0,0.63394426,260.56849,-13.729501)"><tspan
          x="429.04575"
          y="118.36737"
-         id="tspan40"><tspan
+         id="tspan137"><tspan
    style="font-weight:bold"
-   id="tspan39">Rule 1</tspan>: At site k, select haplotypes matching the </tspan><tspan
+   id="tspan136">Rule 1</tspan>: At site k, select haplotypes matching the </tspan><tspan
          x="429.04575"
          y="125.98736"
-         id="tspan41">query allele (0 or 1). 
+         id="tspan138">query allele (0 or 1). 
 </tspan><tspan
          x="429.04575"
          y="133.60735"
-         id="tspan42">
+         id="tspan139">
 </tspan><tspan
          x="429.04575"
          y="141.22735"
-         id="tspan45"><tspan
+         id="tspan142"><tspan
    style="font-weight:bold"
-   id="tspan43">Rule</tspan><tspan
+   id="tspan140">Rule</tspan><tspan
    style="font-weight:bold"
-   id="tspan44"> 2</tspan>: After sorting, restrict to the corresponding </tspan><tspan
+   id="tspan141"> 2</tspan>: After sorting, restrict to the corresponding </tspan><tspan
          x="429.04575"
          y="148.84734"
-         id="tspan46">contiguous block.</tspan></text>
+         id="tspan143">contiguous block.</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.27502px;line-height:1.05;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.247267"
@@ -9599,16 +9606,16 @@
     <text
        xml:space="preserve"
        style="font-size:4.42846px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#b3b3b3;fill-opacity:1;stroke-width:0.207584"
-       x="436.67682"
+       x="441.43939"
        y="169.08318"
        id="text549"><tspan
          sodipodi:role="line"
          id="tspan549"
-         style="font-size:4.42846px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;fill:#b3b3b3;fill-opacity:1;stroke-width:0.207584"
-         x="436.67682"
-         y="169.08318">report these</tspan></text>
+         style="font-size:4.42846px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;fill:#800080;fill-opacity:1;stroke-width:0.207584"
+         x="441.43939"
+         y="169.08318">report matches</tspan></text>
     <rect
-       style="fill:none;fill-opacity:1;stroke:#666666;stroke-width:0.19616;stroke-dasharray:0.352649, 0.352649;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       style="fill:none;fill-opacity:1;stroke:#800080;stroke-width:0.19616;stroke-dasharray:0.352649, 0.352649;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect550"
        width="21.851355"
        height="25.29332"
@@ -9616,7 +9623,7 @@
        y="170.63927"
        ry="0" />
     <path
-       style="fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.361;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.361, 0.361;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:#b3b3b3;fill-opacity:1;stroke:#800080;stroke-width:0.361;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.361, 0.361;stroke-dashoffset:0;stroke-opacity:1"
        d="m 417.10704,173.18996 11.30973,-3.09395"
        id="path550"
        sodipodi:nodetypes="cc" />
@@ -11293,14 +11300,14 @@
        transform="translate(-16.38739,-0.27841326)"><tspan
          x="508.09418"
          y="66.906418"
-         id="tspan47">roof index of<tspan
+         id="tspan144">roof index of<tspan
    y="66.906418"
-   id="tspan48"> </tspan></tspan><tspan
+   id="tspan145"> </tspan></tspan><tspan
          x="508.09418"
          y="70.547681"
-         id="tspan49">expansion<tspan
+         id="tspan146">expansion<tspan
    y="70.547681"
-   id="tspan50"> </tspan></tspan></text>
+   id="tspan147"> </tspan></tspan></text>
     <path
        style="fill:#000000;fill-opacity:1;stroke:#ab1f87;stroke-width:0.361;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.361, 0.361;stroke-dashoffset:0;stroke-opacity:1"
        d="m 505.89979,84.160043 -5.97791,-12.3353"
@@ -12243,25 +12250,25 @@
        transform="matrix(0.80142839,0,0,0.80142839,-136.16858,220.73032)"><tspan
          x="429.04575"
          y="118.36737"
-         id="tspan52"><tspan
+         id="tspan151"><tspan
    style="font-weight:bold"
-   id="tspan51">Rule 1</tspan>: Scan only within the </tspan><tspan
+   id="tspan148">Rule 1</tspan>: Scan only within the </tspan><tspan
          x="429.04575"
          y="125.98736"
-         id="tspan53">current allele block (0 or 1). 
+         id="tspan155">current allele block (0 or 1). 
 </tspan><tspan
          x="429.04575"
          y="133.60735"
-         id="tspan54">
+         id="tspan156">
 </tspan><tspan
          x="429.04575"
          y="141.22735"
-         id="tspan59"><tspan
+         id="tspan160"><tspan
    style="font-weight:bold"
-   id="tspan58">Rule 2</tspan>:  Continue while d does not </tspan><tspan
+   id="tspan158">Rule 2</tspan>:  Continue while d does not </tspan><tspan
          x="429.04575"
          y="148.84734"
-         id="tspan67">increase (d[next] &lt;= d[current]).</tspan></text>
+         id="tspan162">increase (d[next] &lt;= d[current]).</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.27502px;line-height:1.05;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.247267"
@@ -14450,12 +14457,12 @@
        transform="matrix(0.71310827,0,0,0.71310827,204.72153,66.884732)"><tspan
          x="482.38113"
          y="270.1749"
-         id="tspan69">Determine the<tspan
+         id="tspan166">Determine the<tspan
    y="270.1749"
-   id="tspan74"> </tspan></tspan><tspan
+   id="tspan168"> </tspan></tspan><tspan
          x="482.38113"
          y="277.79488"
-         id="tspan76">threshold for d value</tspan></text>
+         id="tspan170">threshold for d value</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;white-space:pre;inline-size:53.2359;display:inline;stroke-width:0.264583"
@@ -14465,11 +14472,11 @@
        transform="matrix(0.71310827,0,0,0.71310827,204.72153,103.00697)"><tspan
          x="482.38113"
          y="270.1749"
-         id="tspan78">Determine 
+         id="tspan172">Determine 
 </tspan><tspan
          x="482.38113"
          y="277.79488"
-         id="tspan79">the inteval blocks</tspan></text>
+         id="tspan174">the inteval blocks</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.14137px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#a91a85;fill-opacity:1;stroke-width:0.194127"
@@ -14511,7 +14518,7 @@
        transform="matrix(0.81872301,0,0,0.81872301,115.94001,64.622909)"><tspan
          x="433.48663"
          y="374.98407"
-         id="tspan80">Finding all matches longer than a minimum length L</tspan></text>
+         id="tspan175">Finding all matches longer than a minimum length L</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.35;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.264583"
