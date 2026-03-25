@@ -22,7 +22,7 @@ When the tracking block converges completely (the tracking width narrows to 1), 
 1.  **Trigger**: Expansion is initiated when the tracking width is 1.
 2.  **Direction**: The search proceeds to the right within the prefix array to find neighboring haplotypes. If the search reaches the boundary of an allele block, it expands to the left.
 3.  **Height and Boundary**: The length of these expanded matches is determined by the **divergence vector ($d_k$)**. The "roof index of expansion" (highlighted in the divergence matrix) indicates the site where a neighboring haplotype starts to match with query.
-4.  **Termination**: We continue expanding to neighboring haplotypes as long as they share a match length exceeding the current threshold (i.e., their $d$ value is less than a specific sentinel or the current match start).
+4.  **Termination**: We continue expanding to neighboring haplotypes as long as they share a match ($d$ value is less than sentinel at that $k$, $\text{sentinel}=k+1$).
 
 Finally, the algorithm reports these matches (as seen in the "report these" box), identifying which database samples share the longest segments with our external query.
 
@@ -30,5 +30,5 @@ Finally, the algorithm reports these matches (as seen in the "report these" box)
 
 ## Conclusion
 
-- **Complexity**: Algorithm 5 is highly efficient, allowing a new haplotype of length $N$ to be mapped against a database of $M$ samples in $O(N)$ time, provided the PBWT indices are pre-calculated.
-- **Application**: This "interval expansion" technique is crucial for finding *all* maximal matches, not just the single best match, making it invaluable for pedigree analysis and genealogical search.
+- Algorithm 5 is highly efficient, allowing a new haplotype of length $N$ to be mapped against a database of $M$ samples in $O(N)$ time, goes through sites one time only and filters out unrelated haplotypes early.
+- In practice, algorithm 5 can be a downstream process, aftering construct divergence matrix and traceback information of algorithm 4.
