@@ -1,4 +1,42 @@
 ---
-title: "Summary"
+title: "Summary: The Power of PBWT"
 author: "Truong Phi"
 ---
+
+## Overview
+
+The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by Richard Durbin in 2014, revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.
+
+## The Foundation: Construction
+
+The efficiency of PBWT stems from two primary data structures built during the construction phase (**Algorithms 1 & 2**):
+
+1.  **Prefix Array ($a$):** Stores the permutations of haplotypes sorted by their reverse prefixes at every site. This sorting naturally groups similar haplotypes together.
+2.  **Divergence Array ($d$):** Tracks the starting position of the longest match between adjacent haplotypes in the sorted order.
+
+These structures are built in **$O(MN)$** time (where $M$ is the number of haplotypes and $N$ is the number of sites), requiring only a single stable-sort pass through the genotype matrix.
+
+## Core Capabilities
+
+Once constructed, the PBWT provides a framework for various types of genetic analysis:
+
+### 1. Internal Match Discovery
+*   **Fixed-length Matches (Algorithm 3):** Identifies all pairs of haplotypes within the database sharing segments longer than a threshold $L$. This is essential for detecting Identical-By-Descent (IBD) segments.
+*   **Set Maximal Matches (Algorithm 4):** Finds the "longest possible" matches for every haplotype against all others. By using the divergence array to control scan boundaries, it avoids redundant comparisons.
+
+### 2. External Query Matching
+*   **Fast Mapping (Algorithm 5):** Allows a new, external haplotype to be mapped against the existing database. By "tracking" the query's position through the prefix-sorted intervals, it can find all maximal matches in **$O(N)$** time—independent of the database size $M$.
+
+## Why PBWT Matters
+
+The brilliance of PBWT lies in its **linear scalability**. Whether you are searching for internal relatives or mapping new samples, the time complexity remains proportional to the data size. 
+
+| Feature | Complexity | Use Case |
+| :--- | :--- | :--- |
+| **Construction** | $O(MN)$ | Building reference panels |
+| **IBD Detection** | $O(MN)$ | Population genetics, genealogy |
+| **Query Matching** | $O(N)$ | Genotype imputation, phasing |
+
+## Conclusion
+
+PBWT is more than just a compression or sorting trick; it is a fundamental coordinate system for genomic data. By transforming a raw genotype matrix into prefix and divergence arrays, it turns complex sequence matching problems into simple range-based lookups, powering the next generation of large-scale genomic analysis tools.
