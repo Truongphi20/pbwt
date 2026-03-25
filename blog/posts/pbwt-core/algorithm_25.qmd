@@ -5,9 +5,33 @@ author: "Truong Phi"
 
 ## Introduction
 
+**Algorithm 5** describes how to map an external query sequence—one not present in the original database—into a pre-built PBWT. This is a foundational operation for genotype imputation, phased sequence search, and genealogical analysis. While Algorithms 3 and 4 identify internal matches within a dataset, Algorithm 5 provides an efficient way to find maximal matches for new samples by tracking their prefix-sorted position through the database.
 
 ## Description
 
+![Algorithms 2 & 5: Reporting matches of an external query haplotype](../../assets/algorithm_25.png){#algorithm25}
+
+The figure above illustrates the two core phases of Algorithm 5: **Tracking** and **Interval Expansion**.
+
+### The Tracking Process
+As we process the query sequence site-by-site ($k$), we maintain a range (interval) in the prefix array that represents the subset of database haplotypes matching the query.
+
+-   **Rule 1: Allele Selection**: At each site $k$, we select the haplotypes in the database that share the same allele (0 or 1) as the query sequence.
+-   **Rule 2: Block Restriction**: Due to the prefix sorting property, these matching haplotypes form a contiguous block. We restrict our search to this block for the next site.
+
+### The Rules of Interval Expansion
+When the query sequence can no longer be extended (e.g., a mismatch occurs or the tracking width narrows to 1), Algorithm 5 performs an **expansion** to identify all maximal matches.
+
+1.  **Trigger**: Expansion is typically initiated when the tracking width is 1, meaning we are following a single matching haplotype path.
+2.  **Direction**: The search proceeds to the right within the prefix array to find neighboring haplotypes. If the search reaches the boundary of an allele block, it expands to the left.
+3.  **Height and Boundary**: The length of these expanded matches is determined by the **divergence array ($d$)**. The "roof index of expansion" (highlighted in the divergence matrix) indicates the site where a neighboring haplotype diverges from the query path.
+4.  **Termination**: We continue expanding to neighboring haplotypes as long as they share a match length exceeding the current threshold (i.e., their $d$ value is less than a specific sentinel or the current match start).
+
+Finally, the algorithm reports these matches (as seen in the "report these" box), identifying which database samples share the longest segments with our external query.
 
 
-## Comments
+
+## Conclusion
+
+- **Complexity**: Algorithm 5 is highly efficient, allowing a new haplotype of length $N$ to be mapped against a database of $M$ samples in $O(N)$ time, provided the PBWT indices are pre-calculated.
+- **Application**: This "interval expansion" technique is crucial for finding *all* maximal matches, not just the single best match, making it invaluable for pedigree analysis and genealogical search.
