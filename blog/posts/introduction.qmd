@@ -11,8 +11,15 @@ The PBWT provides an efficient way to sort haplotypes at every position along a 
 
 ### Purposes
 
+*   **Scalability:** Enable efficient analysis of hundreds of thousands to millions of genomes.
+*   **Speed:** Perform haplotype matching and sequence search in time independent of the database size.
+*   **Compression:** Represent genotype matrices in a format that naturally facilitates both compression and search.
 
 ### Content covered
+
+*   **Construction:** How to build prefix and divergence arrays (**Algorithms 1 & 2**).
+*   **Internal Matching:** Identifying shared segments and maximal matches within a population (**Algorithms 3 & 4**).
+*   **External Querying:** Mapping new samples against a pre-built PBWT database (**Algorithm 5**).
 
 
 

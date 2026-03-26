@@ -40,4 +40,3 @@ For each identified block, Algorithm 3 reports all constituent haplotype pairs a
 
 - Algorithm 3's primary role is to identify match blocks, while Algorithm 2 manages the calculation of divergence values and traceback to original haplotypes.  
 - Algorithm 3 is remarkably efficient, identifying all match blocks in $O(MN)$ time by scanning the haplotypes once at each site. 
-- This approach is widely used in genetic genealogy and population genetics to detect shared ancestry and identify conserved genomic regions within populations.
