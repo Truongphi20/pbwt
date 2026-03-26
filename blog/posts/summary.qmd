@@ -1,11 +1,11 @@
 ---
-title: "Summary: The Power of PBWT"
+title: "Summary"
 author: "Truong Phi"
 ---
 
 ## The Foundation: Construction
 
-The efficiency of the PBWT stems from two primary data structures built during the construction phase (**Algorithms 1 & 2**):
+The efficiency of the PBWT stems from two primary data structures built during the construction phase (**Algorithms 2**):
 
 1.  **Prefix Array ($a$):** Stores the permutations of haplotypes sorted by their reverse prefixes at every site. This sorting naturally groups similar haplotypes together.
 2.  **Divergence Array ($d$):** Tracks the starting position of the longest match between adjacent haplotypes in the sorted order.
@@ -27,7 +27,7 @@ Once constructed, the PBWT provides a framework for various types of high-perfor
 
 There are two primary strategies for implementing PBWT-based analysis, each with distinct trade-offs:
 
--   **Strategy 1: Full Precomputation.** Store the complete prefix and divergence arrays for all sites. This allows for rapid retrieval of match information and supports complex downstream queries without reprocessing the data. However, it significantly increases the memory footprint (often $3\times$ or more compared to raw genotypes).
+-   **Strategy 1: Full Precomputation.** Store the complete prefix and divergence arrays for all sites. This allows for rapid retrieval of match information and supports complex downstream queries without reprocessing the data. However, it significantly increases the memory footprint.
 -   **Strategy 2: On-the-fly Processing.** Update the prefix and divergence vectors site-by-site during a single iteration. This is highly memory-efficient as it only requires $O(M)$ space at any given time, but it requires re-scanning the data if new analyses are needed later.
 
 ## Conclusion
