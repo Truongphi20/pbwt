@@ -11,7 +11,9 @@ The PBWT provides an efficient way to sort haplotypes at every position along a 
 
 ### Motivation
 
-PBWT algorithms is powerfull but still hard to understand for newbie. Thank for the intensive [Miles's blog](https://alimanfoo.github.io/2016/06/21/understanding-pbwt.html) on creating practical code from the Richard's article, and implementation. However, there is still a missing of intuition of processing, and how it is implemented in real code. I created this blog to give mental models on how PBWT algorithms actually worked by reading [Richard's source code](https://github.com/richarddurbin/pbwt), create pseudo-code (simplify and capture algorithm only), give understanding workflow figures on specific example.  
+The PBWT algorithm is powerful, yet it can be challenging for newcomers to grasp. I am grateful for Alistair Miles's insightful [blog post](https://alimanfoo.github.io/2016/06/21/understanding-pbwt.html), which provides a practical bridge between Richard Durbin's original paper and a working implementation. 
+
+However, there is still a need for a deeper intuition of the underlying processes and how they translate into production-level code. I created this blog to provide mental models of how PBWT algorithms function. By analyzing [Richard Durbin's source code](https://github.com/richarddurbin/pbwt), I have developed simplified pseudo-code that captures the core logic and created illustrative algorithmic diagrams to visualize how the algorithms are implemented with a specific example.
 
 ### Content covered
 
