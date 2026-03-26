@@ -1,5 +1,5 @@
 ---
-title: "Algorithms 2&4: Reporting Set Maximal Matches"
+title: "Algorithm 2&4: Reporting Set Maximal Matches"
 author: "Truong Phi"
 ---
 

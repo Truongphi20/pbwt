@@ -5,7 +5,7 @@ author: "Truong Phi"
 
 ## The Foundation: Construction
 
-The efficiency of PBWT stems from two primary data structures built during the construction phase (**Algorithms 1 & 2**):
+The efficiency of PBWT stems from two primary data structures built during the construction phase (**Algorithms 1&2**):
 
 1.  **Prefix Array ($a$):** Stores the permutations of haplotypes sorted by their reverse prefixes at every site. This sorting naturally groups similar haplotypes together.
 2.  **Divergence Array ($d$):** Tracks the starting position of the longest match between adjacent haplotypes in the sorted order.
@@ -23,15 +23,11 @@ Once constructed, the PBWT provides a framework for various types of genetic ana
 ### 2. External Query Matching
 *   **Fast Mapping (Algorithm 5):** Allows a new, external haplotype to be mapped against the existing database. By "tracking" the query's position through the prefix-sorted intervals, it can find all maximal matches in **$O(N)$** time—independent of the database size $M$.
 
-## Why PBWT Matters
+## Limitations
+There are still two options to implement algorithm 2 with particular trace-off:
 
-The brilliance of PBWT lies in its **linear scalability**. Whether you are searching for internal relatives or mapping new samples, the time complexity remains proportional to the data size. 
-
-| Feature | Complexity | Use Case |
-| :--- | :--- | :--- |
-| **Construction** | $O(MN)$ | Building reference panels |
-| **IBD Detection** | $O(MN)$ | Population genetics, genealogy |
-| **Query Matching** | $O(N)$ | Genotype imputation, phasing |
+- **Implement 1**: Save full contruction of divergence and prefix arrays (algorithm 2), and utilizing them in downstream (algorithm 3, 4, 5). However, it tripples memory to store, but it saves time to retrieve information. 
+- **Implement 2**: In contrast, only using and updating divergence, and prefix vectors at every site in iteration, it saves memory, but have to recalculate algorithm 2 everytime using.
 
 ## Conclusion
 
