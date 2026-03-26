@@ -9,17 +9,17 @@ The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by [Richard Durb
 
 The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.
 
-### Purposes
+### Motivation
 
-*   **Scalability:** Enable efficient analysis of hundreds of thousands to millions of genomes.
-*   **Speed:** Perform haplotype matching and sequence search in time independent of the database size.
-*   **Compression:** Represent genotype matrices in a format that naturally facilitates both compression and search.
+
 
 ### Content covered
 
-*   **Construction:** How to build prefix and divergence arrays (**Algorithms 1 & 2**).
-*   **Internal Matching:** Identifying shared segments and maximal matches within a population (**Algorithms 3 & 4**).
-*   **External Querying:** Mapping new samples against a pre-built PBWT database (**Algorithm 5**).
+*   **Construction:** How to build prefix and divergence arrays ([Algorithms 1&2](./pbwt-core/algorithm_12.qmd)).
+*   **Internal Matching:** Identifying shared segments and maximal matches within a population:
+    - [Algorithms 2&3](./pbwt-core/algorithm_23.qmd): Report matches longer than $L$
+    - [Algorithms 2&4](./pbwt-core/algorithm_24.qmd): Report set maximal matches
+*   **External Querying:** Mapping a new haplotype against a PBWT database ([Algorithm 2&5](./pbwt-core/algorithm_25.qmd)).
 
 
 
