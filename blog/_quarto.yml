@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: _site
 
+bibliography: assets/references.bib
+
 website:
   page-navigation: true
   title: "PBWT Blog"
