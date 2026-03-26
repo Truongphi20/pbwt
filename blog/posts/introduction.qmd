@@ -1,0 +1,31 @@
+---
+title: "Introduction"
+author: "Truong Phi"
+---
+
+## Overview
+
+The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by [Richard Durbin in 2014](https://pmc.ncbi.nlm.nih.gov/articles/PMC3998136/), revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.
+
+The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.
+
+### Motivation
+
+The PBWT algorithm is powerful, yet it can be challenging for newcomers to grasp. I am grateful for Alistair Miles's insightful [blog post](https://alimanfoo.github.io/2016/06/21/understanding-pbwt.html), which provides a practical bridge between Richard Durbin's original paper and a working implementation. 
+
+However, there is still a need for a deeper intuition of the underlying processes and how they translate into production-level code. I created this blog to provide mental models of how PBWT algorithms function. By analyzing [Richard Durbin's source code](https://github.com/richarddurbin/pbwt), I have developed simplified pseudo-code that captures the core logic and created illustrative algorithmic diagrams to visualize how the algorithms are implemented with a specific example.
+
+### Content covered
+
+*   **Construction:** How to build prefix and divergence arrays ([Algorithms 1&2](./pbwt-core/algorithm_12.qmd)).
+*   **Internal Matching:** Identifying shared segments and maximal matches within a population:
+    - [Algorithms 2&3](./pbwt-core/algorithm_23.qmd): Report matches longer than $L$
+    - [Algorithms 2&4](./pbwt-core/algorithm_24.qmd): Report set maximal matches
+*   **External Querying:** Mapping a new haplotype against a PBWT database ([Algorithm 2&5](./pbwt-core/algorithm_25.qmd)).
+
+
+
+---
+
+::: {#refs}
+:::

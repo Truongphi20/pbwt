@@ -1,0 +1,2 @@
+#pragma once
+#define PBWT_COMMIT_HASH "@PBWT_COMMIT_HASH@"
