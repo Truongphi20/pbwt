@@ -1,0 +1,232 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PBWT Blog",
+    "section": "",
+    "text": "Overview\nThe Positional Burrows-Wheeler Transform (PBWT), introduced by Richard Durbin in 2014,1 revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.\nThe PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "PBWT Blog",
+    "section": "",
+    "text": "Richard Durbin, “Efficient Haplotype Matching and Storage Using the Positional Burrows–Wheeler Transform (PBWT),” Bioinformatics 30, no. 9 (2014): 1266–72.↩︎",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_12.html",
+    "href": "posts/pbwt-core/algorithm_12.html",
+    "title": "Algorithm 1&2: Build the prefix array and divergence array",
+    "section": "",
+    "text": "Introduction\nAt its core, PBWT relies on sorting haplotypes at each site to reveal local similarities and create connections between related haplotypes. This document describes the first two fundamental algorithms:",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algorithm 1&2: Build the prefix array and divergence array</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_12.html#introduction",
+    "href": "posts/pbwt-core/algorithm_12.html#introduction",
+    "title": "Algorithm 1&2: Build the prefix array and divergence array",
+    "section": "",
+    "text": "Algorithm 1: The conceptual foundation that builds the prefix array by sorting haplotypes based on their reverse prefixes.\nAlgorithm 2: The primary practical implementation which constructs both the prefix array and the divergence array in a single pass.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algorithm 1&2: Build the prefix array and divergence array</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_12.html#description",
+    "href": "posts/pbwt-core/algorithm_12.html#description",
+    "title": "Algorithm 1&2: Build the prefix array and divergence array",
+    "section": "Description",
+    "text": "Description\n\n\n\nAlgorithm 1&2: Building the prefix array and divergence array\n\n\nThe figure above illustrates the step-by-step process of Algorithms 1 and 2 to construct the prefix array (\\(a\\)) and the divergence array (\\(d\\)) from a set of haplotypes.\n\nHaplotype Matrix and Sorting\nHaplotypes are represented as columns, and sites as rows. At each site \\(k\\) (indicated by the cursor), we sort the haplotypes based on their genotype values (0 or 1). As shown by the grey arrows, this is a stable sort: haplotypes with a 0 at site \\(k\\) are placed before those with a 1, while their original order is still recognized.\n\nThe top matrix: Shows the initial state at site \\(k=0\\).\nThe middle matrix: Shows the state after sorting at site \\(k=0\\).\nThe bottom matrix: Shows the state after sorting at site \\(k=1\\).\n\n\n\nPrefix Array (\\(a\\))\nThe matrix \\(a\\) on the right stores these permutations. Each row \\(k\\) contains the indices of haplotypes in their sorted order at site \\(k\\). For example, the haplotypes (columns) are reordered to \\([0, 1, 3, 2, 4, 5]\\), forming the first row of the prefix array \\(a\\); and the sort on site 1 reorders the columns to \\([0, 3, 4, 5, 1, 2]\\), forming the second row of \\(a\\).\n\n\nDivergence Array (\\(d\\))\nThe divergence array \\(d\\) tracks the length of the matching prefix between adjacent haplotypes in the sorted order. Specifically, \\(d_k[i]\\) stores the smallest index \\(j\\) such that haplotype \\(a_k[i]\\) matches \\(a_k[i-1]\\) from site \\(j\\) to site \\(k\\).\n\nPurpose boxes: Highlight the site \\(j\\) that determines the value of \\(d_k[i]\\). If the haplotypes match at the current site \\(k\\) and previous sites, the box marks the start of that match.\nMismatch: If there is no match at the current site \\(k\\), the divergence is \\(k+1\\), and the box is shown one row below the cursor.\nSentinels: For the first haplotype in the sorted order, \\(d_k[0]\\) is set to \\(k+1\\) as a sentinel value.\n\nFor example, at \\(k=1\\) (the bottom matrix):\n\nHaplotype 3 follows 0. They match at both sites 1 and 0, so \\(d_1[1] = 0\\).\nHaplotype 4 follows 3. They match at site 1 but differ at site 0. Thus, the match starts at site 1, and \\(d_1[2] = 1\\).\nHaplotype 1 follows 5. They differ at site 1, so the match is non-existent, and \\(d_1[4] = k+1 = 2\\).",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algorithm 1&2: Build the prefix array and divergence array</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_12.html#conclusion",
+    "href": "posts/pbwt-core/algorithm_12.html#conclusion",
+    "title": "Algorithm 1&2: Build the prefix array and divergence array",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAlgorithm 2 is the standard implementation used in practice, as it efficiently computes both the prefix and divergence arrays simultaneously.\nIn Richard Durbin’s original source code, Algorithm 1 serves as a conceptual starting point, while Algorithm 2 powers the core functionality for later operations.\nThe divergence array \\(d\\) effectively identifies “chains” of shared segments between haplotypes.\nThe prefix array \\(a\\) enables tracing back and grouping similar haplotypes with high efficiency.\nBoth algorithms run in linear time \\(O(MN)\\), processing the \\(M \\times N\\) genotype matrix in a single pass, making the PBWT highly scalable for massive genomic datasets.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algorithm 1&2: Build the prefix array and divergence array</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_23.html",
+    "href": "posts/pbwt-core/algorithm_23.html",
+    "title": "Algorithm 2&3: Report matches longer than L",
+    "section": "",
+    "text": "Introduction\nAlgorithm 3 builds upon the prefix and divergence arrays from Algorithm 2 to efficiently identify all pairs of haplotypes sharing common segments of at least length \\(L\\). This is a fundamental operation for detecting Identical-By-Descent (IBD) segments within a population.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Algorithm 2&3: Report matches longer than L</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_23.html#description",
+    "href": "posts/pbwt-core/algorithm_23.html#description",
+    "title": "Algorithm 2&3: Report matches longer than L",
+    "section": "Description",
+    "text": "Description\n\n\n\nAlgorithm 2&3: Finding all matches longer than a minimum length \\(L\\)\n\n\nThe figure above illustrates how Algorithm 3 leverages the divergence array to identify matches meeting a length threshold \\(L\\) at site \\(k\\).\n\nThe Match Length Condition\nThe length of a match between two adjacent haplotypes in the sorted order at site \\(k\\) is determined by the divergence value \\(d[i]\\). Specifically, if a match starts at site \\(d[i]\\) and ends at site \\(k\\), its length is \\(k - d[i] + 1\\).\nTo identify matches of at least length \\(L\\), we check the condition: \\[k - d[i] + 1 \\ge L \\iff d[i] \\le k - L + 1\\]\nIn the example shown in the figure:\n\nCurrent site: \\(k = 2\\)\nMinimum length: \\(L = 2\\)\nThreshold: \\(d[i] \\le 2 - 2 + 1 = 1\\)\n\n\n\nIdentifying Interval Blocks\nAlgorithm 3 identifies “interval blocks”, contiguous ranges of haplotypes in the sorted prefix array that share common segments. A block \\([i, j]\\) is formed if \\(d[m] \\le k - L + 1\\) for all \\(m \\in [i+1, j]\\).\n\nBlock 1: At \\(k=2\\), the divergence value \\(d[2] = 1\\) satisfies the threshold (\\(1 \\le 1\\)). This identifies a match between the haplotype at index 2 (Hap 2) and the one at index 1 (Hap 1), spanning from site 1 to \\(k\\).\nBlock 2: The divergence values \\(d[4] = 0\\) and \\(d[5] = 1\\) both satisfy the threshold, identifying a match block across indices 3, 4, and 5 (Haplotypes 0, 3, and 4):\n\nHap 3 matches Hap 0 from site 0 to \\(k\\).\nHap 4 matches Hap 3 from site 1 to \\(k\\).\n\n\n\n\nReporting Matches\nFor each identified block, Algorithm 3 reports all constituent haplotype pairs as sharing a match of at least length \\(L\\). For Block 2, this includes pairs (0, 3), (3, 4), and (0, 4).",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Algorithm 2&3: Report matches longer than L</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_23.html#conclusion",
+    "href": "posts/pbwt-core/algorithm_23.html#conclusion",
+    "title": "Algorithm 2&3: Report matches longer than L",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAlgorithm 3’s primary role is to identify match blocks, while Algorithm 2 manages the calculation of divergence values and traceback to original haplotypes.\n\nAlgorithm 3 is remarkably efficient, identifying all match blocks in \\(O(MN)\\) time by scanning the haplotypes once at each site.\nThis approach is widely used in genetic genealogy and population genetics to detect shared ancestry and identify conserved genomic regions within populations.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Algorithm 2&3: Report matches longer than L</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_24.html",
+    "href": "posts/pbwt-core/algorithm_24.html",
+    "title": "Algorithms 2&4: Reporting Set Maximal Matches",
+    "section": "",
+    "text": "Introduction\nWhile Algorithm 3 finds all matches exceeding a fixed threshold \\(L\\), Algorithm 4 focuses on identifying set maximal matches. A set-maximal match is one among sorted haplotypes that cannot be extended further in either direction (left or right) without encountering a mismatch.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Algorithms 2&4: Reporting Set Maximal Matches</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_24.html#description",
+    "href": "posts/pbwt-core/algorithm_24.html#description",
+    "title": "Algorithms 2&4: Reporting Set Maximal Matches",
+    "section": "Description",
+    "text": "Description\n\n\n\nAlgorithms 2&4: Reporting set maximal matches\n\n\nThe figure above demonstrates how Algorithm 4 leverages the divergence array (\\(d\\)) to efficiently control scan boundaries and identify these maximal matches at a specific site \\(k\\).\n\nSet maximal matches at site \\(k\\)\nAt any given site \\(k\\), our goal is to find the longest matches between a specific haplotype and all other haplotypes in the database.\nIn the example:\n\nCurrent site: \\(k = 2\\).\nQuery haplotype: The haplotype at index 1 in the sorted order (indicated by the green arrow).\nGoal: Identify all longest matches between other haplotypes and the query.\n\n\n\nThe scanning rules\nTo find the range of haplotypes that share a maximal match, Algorithm 4 scans upwards and downwards from the query position in the prefix array. The scan is governed by two key rules:\n\nRule 1: Allele Block Constraint The scan remains within the current allele block. If the query haplotype has a 0 at site \\(k\\), we only consider other haplotypes that also have a 0 at site \\(k\\). In the figure, this restricts the scan to positions 0, 1, and 2.\nRule 2: Divergence Control The scan continues only as long as the divergence values do not increase: \\(d[next] \\le d[current]\\). Since \\(d[i]\\) represents the site where the match between haplotype \\(i\\) and \\(i-1\\) begins, a non-increasing \\(d\\) ensures the match length is at least as long as the initial match being tracked.\n\n\n\nWalking through the example\nFor the query haplotype at position \\(i=1\\):\n\nDivergence values at site \\(k=2\\): \\(d = [3, 2, 1, 3, 0, 1]\\).\nLeft scan: We examine position 0. Since \\(d[0] = 3\\) and \\(d[1] = 2\\) (\\(3 &gt; 2\\)), Rule 2 is violated, and the scan stops.\nRight scan: We examine position 2. Since \\(d[2] = 1\\) (\\(1 \\le 2\\)), Rule 2 is satisfied, and the match extends to position 2. If we tried to proceed to position 3, we would encounter a 1 at site \\(k\\) (violating Rule 1) and \\(d[3] = 3\\) (violating Rule 2).\n\nThe resulting set-maximal match (highlighted in purple) identifies the maximal segment shared with the query haplotype.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Algorithms 2&4: Reporting Set Maximal Matches</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_24.html#conclusion",
+    "href": "posts/pbwt-core/algorithm_24.html#conclusion",
+    "title": "Algorithms 2&4: Reporting Set Maximal Matches",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nLike the preceding algorithms, Algorithm 4 runs in \\(O(MN)\\) time. By avoiding the need to iterate through all other haplotypes to identify matches, it remains efficient even for very large datasets.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Algorithms 2&4: Reporting Set Maximal Matches</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_25.html",
+    "href": "posts/pbwt-core/algorithm_25.html",
+    "title": "Algorithm 2&5: Fast query matching",
+    "section": "",
+    "text": "Introduction\nAlgorithm 5 describes how to map an external query sequence—one not present in the original database—against a pre-built PBWT. While Algorithms 3 and 4 identify internal matches within a dataset, Algorithm 5 provides an efficient way to find maximal matches for new samples by tracking their prefix-sorted position through the database.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Algorithm 2&5: Fast query matching</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_25.html#description",
+    "href": "posts/pbwt-core/algorithm_25.html#description",
+    "title": "Algorithm 2&5: Fast query matching",
+    "section": "Description",
+    "text": "Description\n\n\n\nAlgorithms 2&5: Reporting matches of an external query haplotype\n\n\nThe figure above illustrates the two core phases of Algorithm 5: Tracking and Interval Expansion.\n\nThe Tracking Process\nAs we process the query sequence site-by-site (\\(k\\)), we maintain a range (interval) in the prefix array that represents the subset of database haplotypes matching the query. At each site \\(k\\), the current interval block is identified as the intersection between the previous block (Rule 1) and the match genotype block (0s or 1s, according to the allele of the query haplotype at site \\(k\\)) (Rule 2).\n\n\nThe Rules of Interval Expansion\nWhen the tracking block converges (e.g., the tracking width narrows to 1), Algorithm 5 performs an expansion to identify all maximal matches.\n\nTrigger: Expansion is initiated when the tracking width reaches 1.\nDirection: The search proceeds to the right within the prefix array to find neighboring haplotypes. If the search reaches the boundary of an allele block, it expands to the left.\nHeight and Boundary: The length of these expanded matches is determined by the divergence vector (\\(d_k\\)). The “roof index of expansion” (highlighted in the divergence matrix) indicates the site where a neighboring haplotype begins matching the query.\nTermination: We continue expanding to neighboring haplotypes as long as they share a match (where the \\(d\\) value is less than the sentinel at that \\(k\\), \\(\\text{sentinel}=k+1\\)).\n\nFinally, the algorithm reports these matches (as seen in the “report these” box), identifying which database samples share the longest segments with our external query.",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Algorithm 2&5: Fast query matching</span>"
+    ]
+  },
+  {
+    "objectID": "posts/pbwt-core/algorithm_25.html#conclusion",
+    "href": "posts/pbwt-core/algorithm_25.html#conclusion",
+    "title": "Algorithm 2&5: Fast query matching",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAlgorithm 5 is highly efficient, allowing a new haplotype of length \\(N\\) to be mapped against a database of \\(M\\) samples in \\(O(N)\\) time. It iterates through sites only once and filters out unrelated haplotypes early.\nIn practice, Algorithm 5 can be a downstream process, performed after constructing the divergence matrix and prefix arrays (Algorithm 2).",
+    "crumbs": [
+      "Core algorithms",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Algorithm 2&5: Fast query matching</span>"
+    ]
+  },
+  {
+    "objectID": "posts/summary.html",
+    "href": "posts/summary.html",
+    "title": "Summary: The Power of PBWT",
+    "section": "",
+    "text": "The Foundation: Construction\nThe efficiency of PBWT stems from two primary data structures built during the construction phase (Algorithms 1 & 2):\nThese structures are built in \\(O(MN)\\) time (where \\(M\\) is the number of haplotypes and \\(N\\) is the number of sites), requiring only a single stable-sort pass through the genotype matrix.",
+    "crumbs": [
+      "Summary",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary: The Power of PBWT</span>"
+    ]
+  },
+  {
+    "objectID": "posts/summary.html#the-foundation-construction",
+    "href": "posts/summary.html#the-foundation-construction",
+    "title": "Summary: The Power of PBWT",
+    "section": "",
+    "text": "Prefix Array (\\(a\\)): Stores the permutations of haplotypes sorted by their reverse prefixes at every site. This sorting naturally groups similar haplotypes together.\nDivergence Array (\\(d\\)): Tracks the starting position of the longest match between adjacent haplotypes in the sorted order.",
+    "crumbs": [
+      "Summary",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary: The Power of PBWT</span>"
+    ]
+  },
+  {
+    "objectID": "posts/summary.html#core-capabilities",
+    "href": "posts/summary.html#core-capabilities",
+    "title": "Summary: The Power of PBWT",
+    "section": "Core Capabilities",
+    "text": "Core Capabilities\nOnce constructed, the PBWT provides a framework for various types of genetic analysis:\n\n1. Internal Match Discovery\n\nFixed-length Matches (Algorithm 3): Identifies all pairs of haplotypes within the database sharing segments longer than a threshold \\(L\\). This is essential for detecting Identical-By-Descent (IBD) segments.\nSet Maximal Matches (Algorithm 4): Finds the “longest possible” matches for every haplotype against all others. By using the divergence array to control scan boundaries, it avoids redundant comparisons.\n\n\n\n2. External Query Matching\n\nFast Mapping (Algorithm 5): Allows a new, external haplotype to be mapped against the existing database. By “tracking” the query’s position through the prefix-sorted intervals, it can find all maximal matches in \\(O(N)\\) time—independent of the database size \\(M\\).",
+    "crumbs": [
+      "Summary",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary: The Power of PBWT</span>"
+    ]
+  },
+  {
+    "objectID": "posts/summary.html#why-pbwt-matters",
+    "href": "posts/summary.html#why-pbwt-matters",
+    "title": "Summary: The Power of PBWT",
+    "section": "Why PBWT Matters",
+    "text": "Why PBWT Matters\nThe brilliance of PBWT lies in its linear scalability. Whether you are searching for internal relatives or mapping new samples, the time complexity remains proportional to the data size.\n\n\n\nFeature\nComplexity\nUse Case\n\n\n\n\nConstruction\n\\(O(MN)\\)\nBuilding reference panels\n\n\nIBD Detection\n\\(O(MN)\\)\nPopulation genetics, genealogy\n\n\nQuery Matching\n\\(O(N)\\)\nGenotype imputation, phasing",
+    "crumbs": [
+      "Summary",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary: The Power of PBWT</span>"
+    ]
+  },
+  {
+    "objectID": "posts/summary.html#conclusion",
+    "href": "posts/summary.html#conclusion",
+    "title": "Summary: The Power of PBWT",
+    "section": "Conclusion",
+    "text": "Conclusion\nPBWT is more than just a compression or sorting trick; it is a fundamental coordinate system for genomic data. By transforming a raw genotype matrix into prefix and divergence arrays, it turns complex sequence matching problems into simple range-based lookups, powering the next generation of large-scale genomic analysis tools.",
+    "crumbs": [
+      "Summary",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary: The Power of PBWT</span>"
+    ]
+  },
+  {
+    "objectID": "posts/references.html",
+    "href": "posts/references.html",
+    "title": "References",
+    "section": "",
+    "text": "Durbin, Richard. “Efficient Haplotype Matching and Storage Using\nthe Positional Burrows–Wheeler Transform (PBWT).”\nBioinformatics 30, no. 9 (2014): 1266–72.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>References</span>"
+    ]
+  }
+]
