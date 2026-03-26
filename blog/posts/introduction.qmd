@@ -5,7 +5,7 @@ author: "Truong Phi"
 
 ## Overview
 
-The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by Richard Durbin in 2014 [@durbin2014efficient], revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.
+The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by [Richard Durbin in 2014](https://pmc.ncbi.nlm.nih.gov/articles/PMC3998136/), revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.
 
 The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.
 
