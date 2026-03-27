@@ -32,4 +32,4 @@ There are two primary strategies for implementing PBWT-based analysis, each with
 
 ## Conclusion
 
-PBWT is more than just a compression or sorting trick; it is a fundamental coordinate system for genomic data. By transforming a raw genotype matrix into prefix and divergence arrays, it turns complex sequence matching problems into simple range-based lookups, powering the next generation of large-scale genomic analysis tools.
+PBWT is often applied only to biallelic variants, but it’s more than a sorting trick—it defines a fundamental coordinate system for genomic data. By transforming a genotype matrix into prefix and divergence arrays, it converts complex sequence matching into simple range queries, enabling scalable genomic analysis.
