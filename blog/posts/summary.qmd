@@ -3,7 +3,7 @@ title: "Summary"
 author: "Truong Phi"
 ---
 
-## The Foundation: Construction
+## The foundation: Construction
 
 The efficiency of the PBWT stems from two primary data structures built during the construction phase (**Algorithms 2**):
 
@@ -12,24 +12,24 @@ The efficiency of the PBWT stems from two primary data structures built during t
 
 These structures are constructed in **$O(MN)$** time (where $M$ is the number of haplotypes and $N$ is the number of sites), requiring only a single stable-sort pass through the genotype matrix.
 
-## Core Capabilities
+## Core capabilities
 
 Once constructed, the PBWT provides a framework for various types of high-performance genetic analysis:
 
-### 1. Internal Match Discovery
+### 1. Internal match discovery
 *   **Fixed-length Matches (Algorithm 3):** Identifies all pairs of haplotypes within the database sharing segments longer than a threshold $L$. This is essential for detecting Identical-By-Descent (IBD) segments.
 *   **Set Maximal Matches (Algorithm 4):** Finds the "longest possible" matches for every haplotype against all others. By using the divergence array to prune the search space, it avoids redundant comparisons.
 
-### 2. External Query Matching
+### 2. External query matching
 *   **Fast Mapping (Algorithm 5):** Allows a new, external haplotype to be mapped against the existing database. By "tracking" the query's position through the prefix-sorted intervals, it can find all maximal matches in **$O(N)$** time—completely independent of the database size $M$.
 
-## Implementation Trade-offs
+## Implementation trade-offs
 
 There are two primary strategies for implementing PBWT-based analysis, each with distinct trade-offs:
 
--   **Strategy 1: Full Precomputation.** Store the complete prefix and divergence arrays for all sites. This allows for rapid retrieval of match information and supports complex downstream queries without reprocessing the data. However, it significantly increases the memory footprint.
--   **Strategy 2: On-the-fly Processing.** Update the prefix and divergence vectors site-by-site during a single iteration. This is highly memory-efficient as it only requires $O(M)$ space at any given time, but it requires re-scanning the data if new analyses are needed later.
+-   **Strategy 1: Full precomputation.** Store the complete prefix and divergence arrays for all sites. This allows for rapid retrieval of match information and supports complex downstream queries without reprocessing the data. However, it significantly increases the memory footprint.
+-   **Strategy 2: On-the-fly processing.** Update the prefix and divergence vectors site-by-site during a single iteration. This is highly memory-efficient as it only requires $O(M)$ space at any given time, but it requires re-scanning the data if new analyses are needed later.
 
 ## Conclusion
 
-PBWT is more than just a compression or sorting trick; it is a fundamental coordinate system for genomic data. By transforming a raw genotype matrix into prefix and divergence arrays, it turns complex sequence matching problems into simple range-based lookups, powering the next generation of large-scale genomic analysis tools.
+PBWT is often applied only to biallelic variants, but it’s more than a sorting trick—it defines a fundamental coordinate system for genomic data. By transforming a genotype matrix into prefix and divergence arrays, it converts complex sequence matching into simple range queries, enabling scalable genomic analysis.

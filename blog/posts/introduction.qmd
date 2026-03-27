@@ -5,15 +5,18 @@ author: "Truong Phi"
 
 ## Overview
 
-The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by [Richard Durbin in 2014](https://pmc.ncbi.nlm.nih.gov/articles/PMC3998136/), revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.
+The **Positional Burrows-Wheeler Transform (PBWT)**, introduced by Richard Durbin in 2014 [@durbinEfficientHaplotypeMatching2014], is an efficient and scalable data structure for handling large haplotype datasets. It has been applied in many important genomic tasks:
 
-The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.
+- Phasing haplotypes [@browningFastTwostagePhasing2021a] 
+- Genotype imputation [@rubinacciImputationLowcoverageSequencing2023a;@rubinacciGenotypeImputationUsing2020]
+- Identifying identical-by-descent (IBD) segments [@naseriRaPIDUltrafastPowerful2019]
+- Pangenomic haplotype analysis [@baaijensComputationalGraphPangenomics2022]
 
 ### Motivation
 
 The PBWT algorithm is powerful, yet it can be challenging for newcomers to grasp. I am grateful for Alistair Miles's insightful [blog post](https://alimanfoo.github.io/2016/06/21/understanding-pbwt.html), which provides a practical bridge between Richard Durbin's original paper and a working implementation. 
 
-However, there is still a need for a deeper intuition of the underlying processes and how they translate into production-level code. I created this blog to provide mental models of how PBWT algorithms function. By analyzing [Richard Durbin's source code](https://github.com/richarddurbin/pbwt), I have developed simplified pseudo-code that captures the core logic and created illustrative algorithmic diagrams to visualize how the algorithms are implemented with a specific example.
+However, there is still a need for a deeper intuition of the underlying processes and how they were implemented in practice. I created this blog to provide mental models of how PBWT algorithms function. By analyzing [Richard Durbin's source code](https://github.com/richarddurbin/pbwt), I have developed simplified pseudo-code that captures the core logic and created illustrative algorithmic diagrams to visualize how the algorithms are implemented with a specific example.
 
 ### Content covered
 
@@ -25,7 +28,8 @@ However, there is still a need for a deeper intuition of the underlying processe
 
 
 
----
 
-::: {#refs}
+
+::: {#refs style="margin-top: 6.5rem;"}
+---
 :::

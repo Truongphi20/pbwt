@@ -13,7 +13,7 @@ Algorithm 3 builds upon the prefix and divergence arrays from Algorithm 2 to eff
 
 The figure above illustrates how Algorithm 3 leverages the divergence array to identify matches meeting a length threshold $L$ at site $k$.
 
-### The Match Length Condition
+### The match length condition
 The length of a match between two adjacent haplotypes in the sorted order at site $k$ is determined by the divergence value $d[i]$. Specifically, if a match starts at site $d[i]$ and ends at site $k$, its length is $k - d[i] + 1$. 
 
 To identify matches of at least length $L$, we check the condition:
@@ -25,7 +25,7 @@ In the example shown in the figure:
 - **Minimum length**: $L = 2$
 - **Threshold**: $d[i] \le 2 - 2 + 1 = 1$
 
-### Identifying Interval Blocks
+### Identifying interval blocks
 Algorithm 3 identifies "interval blocks", contiguous ranges of haplotypes in the sorted prefix array that share common segments. A block $[i, j]$ is formed if $d[m] \le k - L + 1$ for all $m \in [i+1, j]$.
 
 - **Block 1**: At $k=2$, the divergence value $d[2] = 1$ satisfies the threshold ($1 \le 1$). This identifies a match between the haplotype at index 2 (Hap 2) and the one at index 1 (Hap 1), spanning from site 1 to $k$.
@@ -33,7 +33,7 @@ Algorithm 3 identifies "interval blocks", contiguous ranges of haplotypes in the
     - Hap 3 matches Hap 0 from site 0 to $k$.
     - Hap 4 matches Hap 3 from site 1 to $k$.
 
-### Reporting Matches
+### Reporting matches
 For each identified block, Algorithm 3 reports all constituent haplotype pairs as sharing a match of at least length $L$. For Block 2, this includes pairs (0, 3), (3, 4), and (0, 4).
 
 ## Conclusion

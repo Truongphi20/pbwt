@@ -27,9 +27,9 @@ In the example:
 
 To find the range of haplotypes that share a maximal match, Algorithm 4 scans upwards and downwards from the query position in the prefix array. The scan is governed by two key rules:
 
-1.  **Rule 1: Allele Block Constraint**
+1.  **Rule 1: Allele block constraint**
     The scan remains within the current **allele block**. If the query haplotype has a `0` at site $k$, we only consider other haplotypes that also have a `0` at site $k$. In the figure, this restricts the scan to positions 0, 1, and 2.
-2.  **Rule 2: Divergence Control**
+2.  **Rule 2: Divergence control**
     The scan continues only as long as the divergence values do not increase: $d[next] \le d[current]$. Since $d[i]$ represents the site where the match between haplotype $i$ and $i-1$ begins, a non-increasing $d$ ensures the match length is at least as long as the initial match being tracked.
 
 ### Walking through the example

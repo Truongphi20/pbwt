@@ -16,17 +16,17 @@ At its core, PBWT relies on sorting haplotypes at each site to reveal local simi
 
 The figure above illustrates the step-by-step process of Algorithms 1 and 2 to construct the **prefix array ($a$)** and the **divergence array ($d$)** from a set of haplotypes.
 
-### Haplotype Matrix and Sorting
+### Haplotype matrix and sorting
 Haplotypes are represented as columns, and sites as rows. At each site $k$ (indicated by the **cursor**), we sort the haplotypes based on their genotype values (0 or 1). As shown by the grey arrows, this is a **stable sort**: haplotypes with a `0` at site $k$ are placed before those with a `1`, while their original order is still recognized.
 
 - **The top matrix**: Shows the initial state at site $k=0$.
 - **The middle matrix**: Shows the state after sorting at site $k=0$.
 - **The bottom matrix**: Shows the state after sorting at site $k=1$.
 
-### Prefix Array ($a$)
+### Prefix array ($a$)
 The matrix $a$ on the right stores these permutations. Each row $k$ contains the indices of haplotypes in their sorted order at site $k$. For example, the haplotypes (columns) are reordered to $[0, 1, 3, 2, 4, 5]$, forming the first row of the prefix array $a$; and the sort on site 1 reorders the columns to $[0, 3, 4, 5, 1, 2]$, forming the second row of $a$.
 
-### Divergence Array ($d$)
+### Divergence array ($d$)
 The divergence array $d$ tracks the length of the matching prefix between adjacent haplotypes in the sorted order. Specifically, $d_k[i]$ stores the smallest index $j$ such that haplotype $a_k[i]$ matches $a_k[i-1]$ from site $j$ to site $k$.
 
 - **Purpose boxes**: Highlight the site $j$ that determines the value of $d_k[i]$. If the haplotypes match at the current site $k$ and previous sites, the box marks the start of that match.
