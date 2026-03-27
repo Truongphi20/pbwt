@@ -28,4 +28,5 @@ Finally, the algorithm reports these matches (as seen in the "report these" box)
 
 ## Conclusion
 
+- The query haplotypes must have the same length with PBWT haplotypes.
 - Algorithm 5 is highly efficient, allowing a new haplotype of length $N$ to be mapped against a database of $M$ samples in $O(N)$ time. It iterates through sites only once and filters out unrelated haplotypes early.
