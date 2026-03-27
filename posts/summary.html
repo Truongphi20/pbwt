@@ -47,9 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bec7cbc3933862984366e7801c579a4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7921ce03f2cd29c505a5247768a328bb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -372,13 +372,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-foundation-construction" id="toc-the-foundation-construction" class="nav-link active" data-scroll-target="#the-foundation-construction">The Foundation: Construction</a></li>
-  <li><a href="#core-capabilities" id="toc-core-capabilities" class="nav-link" data-scroll-target="#core-capabilities">Core Capabilities</a>
+  <li><a href="#the-foundation-construction" id="toc-the-foundation-construction" class="nav-link active" data-scroll-target="#the-foundation-construction">The foundation: Construction</a></li>
+  <li><a href="#core-capabilities" id="toc-core-capabilities" class="nav-link" data-scroll-target="#core-capabilities">Core capabilities</a>
   <ul class="collapse">
-  <li><a href="#internal-match-discovery" id="toc-internal-match-discovery" class="nav-link" data-scroll-target="#internal-match-discovery">1. Internal Match Discovery</a></li>
-  <li><a href="#external-query-matching" id="toc-external-query-matching" class="nav-link" data-scroll-target="#external-query-matching">2. External Query Matching</a></li>
+  <li><a href="#internal-match-discovery" id="toc-internal-match-discovery" class="nav-link" data-scroll-target="#internal-match-discovery">1. Internal match discovery</a></li>
+  <li><a href="#external-query-matching" id="toc-external-query-matching" class="nav-link" data-scroll-target="#external-query-matching">2. External query matching</a></li>
   </ul></li>
-  <li><a href="#implementation-trade-offs" id="toc-implementation-trade-offs" class="nav-link" data-scroll-target="#implementation-trade-offs">Implementation Trade-offs</a></li>
+  <li><a href="#implementation-trade-offs" id="toc-implementation-trade-offs" class="nav-link" data-scroll-target="#implementation-trade-offs">Implementation trade-offs</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -413,7 +413,7 @@ window.Quarto = {
 
 
 <section id="the-foundation-construction" class="level2">
-<h2 class="anchored" data-anchor-id="the-foundation-construction">The Foundation: Construction</h2>
+<h2 class="anchored" data-anchor-id="the-foundation-construction">The foundation: Construction</h2>
 <p>The efficiency of the PBWT stems from two primary data structures built during the construction phase (<strong>Algorithms 2</strong>):</p>
 <ol type="1">
 <li><strong>Prefix Array (<span class="math inline">\(a\)</span>):</strong> Stores the permutations of haplotypes sorted by their reverse prefixes at every site. This sorting naturally groups similar haplotypes together.</li>
@@ -422,33 +422,33 @@ window.Quarto = {
 <p>These structures are constructed in <strong><span class="math inline">\(O(MN)\)</span></strong> time (where <span class="math inline">\(M\)</span> is the number of haplotypes and <span class="math inline">\(N\)</span> is the number of sites), requiring only a single stable-sort pass through the genotype matrix.</p>
 </section>
 <section id="core-capabilities" class="level2">
-<h2 class="anchored" data-anchor-id="core-capabilities">Core Capabilities</h2>
+<h2 class="anchored" data-anchor-id="core-capabilities">Core capabilities</h2>
 <p>Once constructed, the PBWT provides a framework for various types of high-performance genetic analysis:</p>
 <section id="internal-match-discovery" class="level3">
-<h3 class="anchored" data-anchor-id="internal-match-discovery">1. Internal Match Discovery</h3>
+<h3 class="anchored" data-anchor-id="internal-match-discovery">1. Internal match discovery</h3>
 <ul>
 <li><strong>Fixed-length Matches (Algorithm 3):</strong> Identifies all pairs of haplotypes within the database sharing segments longer than a threshold <span class="math inline">\(L\)</span>. This is essential for detecting Identical-By-Descent (IBD) segments.</li>
 <li><strong>Set Maximal Matches (Algorithm 4):</strong> Finds the “longest possible” matches for every haplotype against all others. By using the divergence array to prune the search space, it avoids redundant comparisons.</li>
 </ul>
 </section>
 <section id="external-query-matching" class="level3">
-<h3 class="anchored" data-anchor-id="external-query-matching">2. External Query Matching</h3>
+<h3 class="anchored" data-anchor-id="external-query-matching">2. External query matching</h3>
 <ul>
 <li><strong>Fast Mapping (Algorithm 5):</strong> Allows a new, external haplotype to be mapped against the existing database. By “tracking” the query’s position through the prefix-sorted intervals, it can find all maximal matches in <strong><span class="math inline">\(O(N)\)</span></strong> time—completely independent of the database size <span class="math inline">\(M\)</span>.</li>
 </ul>
 </section>
 </section>
 <section id="implementation-trade-offs" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-trade-offs">Implementation Trade-offs</h2>
+<h2 class="anchored" data-anchor-id="implementation-trade-offs">Implementation trade-offs</h2>
 <p>There are two primary strategies for implementing PBWT-based analysis, each with distinct trade-offs:</p>
 <ul>
-<li><strong>Strategy 1: Full Precomputation.</strong> Store the complete prefix and divergence arrays for all sites. This allows for rapid retrieval of match information and supports complex downstream queries without reprocessing the data. However, it significantly increases the memory footprint.</li>
-<li><strong>Strategy 2: On-the-fly Processing.</strong> Update the prefix and divergence vectors site-by-site during a single iteration. This is highly memory-efficient as it only requires <span class="math inline">\(O(M)\)</span> space at any given time, but it requires re-scanning the data if new analyses are needed later.</li>
+<li><strong>Strategy 1: Full precomputation.</strong> Store the complete prefix and divergence arrays for all sites. This allows for rapid retrieval of match information and supports complex downstream queries without reprocessing the data. However, it significantly increases the memory footprint.</li>
+<li><strong>Strategy 2: On-the-fly processing.</strong> Update the prefix and divergence vectors site-by-site during a single iteration. This is highly memory-efficient as it only requires <span class="math inline">\(O(M)\)</span> space at any given time, but it requires re-scanning the data if new analyses are needed later.</li>
 </ul>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>PBWT is more than just a compression or sorting trick; it is a fundamental coordinate system for genomic data. By transforming a raw genotype matrix into prefix and divergence arrays, it turns complex sequence matching problems into simple range-based lookups, powering the next generation of large-scale genomic analysis tools.</p>
+<p>PBWT is often applied only to biallelic variants, but it’s more than a sorting trick—it defines a fundamental coordinate system for genomic data. By transforming a genotype matrix into prefix and divergence arrays, it converts complex sequence matching into simple range queries, enabling scalable genomic analysis.</p>
 
 
 </section>

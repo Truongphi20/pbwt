@@ -48,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-bec7cbc3933862984366e7801c579a4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7921ce03f2cd29c505a5247768a328bb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -379,9 +379,9 @@ window.Quarto = {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
   <ul class="collapse">
-  <li><a href="#the-match-length-condition" id="toc-the-match-length-condition" class="nav-link" data-scroll-target="#the-match-length-condition">The Match Length Condition</a></li>
-  <li><a href="#identifying-interval-blocks" id="toc-identifying-interval-blocks" class="nav-link" data-scroll-target="#identifying-interval-blocks">Identifying Interval Blocks</a></li>
-  <li><a href="#reporting-matches" id="toc-reporting-matches" class="nav-link" data-scroll-target="#reporting-matches">Reporting Matches</a></li>
+  <li><a href="#the-match-length-condition" id="toc-the-match-length-condition" class="nav-link" data-scroll-target="#the-match-length-condition">The match length condition</a></li>
+  <li><a href="#identifying-interval-blocks" id="toc-identifying-interval-blocks" class="nav-link" data-scroll-target="#identifying-interval-blocks">Identifying interval blocks</a></li>
+  <li><a href="#reporting-matches" id="toc-reporting-matches" class="nav-link" data-scroll-target="#reporting-matches">Reporting matches</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
@@ -430,7 +430,7 @@ window.Quarto = {
 </div>
 <p>The figure above illustrates how Algorithm 3 leverages the divergence array to identify matches meeting a length threshold <span class="math inline">\(L\)</span> at site <span class="math inline">\(k\)</span>.</p>
 <section id="the-match-length-condition" class="level3">
-<h3 class="anchored" data-anchor-id="the-match-length-condition">The Match Length Condition</h3>
+<h3 class="anchored" data-anchor-id="the-match-length-condition">The match length condition</h3>
 <p>The length of a match between two adjacent haplotypes in the sorted order at site <span class="math inline">\(k\)</span> is determined by the divergence value <span class="math inline">\(d[i]\)</span>. Specifically, if a match starts at site <span class="math inline">\(d[i]\)</span> and ends at site <span class="math inline">\(k\)</span>, its length is <span class="math inline">\(k - d[i] + 1\)</span>.</p>
 <p>To identify matches of at least length <span class="math inline">\(L\)</span>, we check the condition: <span class="math display">\[k - d[i] + 1 \ge L \iff d[i] \le k - L + 1\]</span></p>
 <p>In the example shown in the figure:</p>
@@ -441,7 +441,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="identifying-interval-blocks" class="level3">
-<h3 class="anchored" data-anchor-id="identifying-interval-blocks">Identifying Interval Blocks</h3>
+<h3 class="anchored" data-anchor-id="identifying-interval-blocks">Identifying interval blocks</h3>
 <p>Algorithm 3 identifies “interval blocks”, contiguous ranges of haplotypes in the sorted prefix array that share common segments. A block <span class="math inline">\([i, j]\)</span> is formed if <span class="math inline">\(d[m] \le k - L + 1\)</span> for all <span class="math inline">\(m \in [i+1, j]\)</span>.</p>
 <ul>
 <li><strong>Block 1</strong>: At <span class="math inline">\(k=2\)</span>, the divergence value <span class="math inline">\(d[2] = 1\)</span> satisfies the threshold (<span class="math inline">\(1 \le 1\)</span>). This identifies a match between the haplotype at index 2 (Hap 2) and the one at index 1 (Hap 1), spanning from site 1 to <span class="math inline">\(k\)</span>.</li>
@@ -453,7 +453,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="reporting-matches" class="level3">
-<h3 class="anchored" data-anchor-id="reporting-matches">Reporting Matches</h3>
+<h3 class="anchored" data-anchor-id="reporting-matches">Reporting matches</h3>
 <p>For each identified block, Algorithm 3 reports all constituent haplotype pairs as sharing a match of at least length <span class="math inline">\(L\)</span>. For Block 2, this includes pairs (0, 3), (3, 4), and (0, 4).</p>
 </section>
 </section>

@@ -48,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-bec7cbc3933862984366e7801c579a4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7921ce03f2cd29c505a5247768a328bb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -379,9 +379,9 @@ window.Quarto = {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
   <ul class="collapse">
-  <li><a href="#haplotype-matrix-and-sorting" id="toc-haplotype-matrix-and-sorting" class="nav-link" data-scroll-target="#haplotype-matrix-and-sorting">Haplotype Matrix and Sorting</a></li>
-  <li><a href="#prefix-array-a" id="toc-prefix-array-a" class="nav-link" data-scroll-target="#prefix-array-a">Prefix Array (<span class="math inline">\(a\)</span>)</a></li>
-  <li><a href="#divergence-array-d" id="toc-divergence-array-d" class="nav-link" data-scroll-target="#divergence-array-d">Divergence Array (<span class="math inline">\(d\)</span>)</a></li>
+  <li><a href="#haplotype-matrix-and-sorting" id="toc-haplotype-matrix-and-sorting" class="nav-link" data-scroll-target="#haplotype-matrix-and-sorting">Haplotype matrix and sorting</a></li>
+  <li><a href="#prefix-array-a" id="toc-prefix-array-a" class="nav-link" data-scroll-target="#prefix-array-a">Prefix array (<span class="math inline">\(a\)</span>)</a></li>
+  <li><a href="#divergence-array-d" id="toc-divergence-array-d" class="nav-link" data-scroll-target="#divergence-array-d">Divergence array (<span class="math inline">\(d\)</span>)</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
@@ -434,7 +434,7 @@ window.Quarto = {
 </div>
 <p>The figure above illustrates the step-by-step process of Algorithms 1 and 2 to construct the <strong>prefix array (<span class="math inline">\(a\)</span>)</strong> and the <strong>divergence array (<span class="math inline">\(d\)</span>)</strong> from a set of haplotypes.</p>
 <section id="haplotype-matrix-and-sorting" class="level3">
-<h3 class="anchored" data-anchor-id="haplotype-matrix-and-sorting">Haplotype Matrix and Sorting</h3>
+<h3 class="anchored" data-anchor-id="haplotype-matrix-and-sorting">Haplotype matrix and sorting</h3>
 <p>Haplotypes are represented as columns, and sites as rows. At each site <span class="math inline">\(k\)</span> (indicated by the <strong>cursor</strong>), we sort the haplotypes based on their genotype values (0 or 1). As shown by the grey arrows, this is a <strong>stable sort</strong>: haplotypes with a <code>0</code> at site <span class="math inline">\(k\)</span> are placed before those with a <code>1</code>, while their original order is still recognized.</p>
 <ul>
 <li><strong>The top matrix</strong>: Shows the initial state at site <span class="math inline">\(k=0\)</span>.</li>
@@ -443,11 +443,11 @@ window.Quarto = {
 </ul>
 </section>
 <section id="prefix-array-a" class="level3">
-<h3 class="anchored" data-anchor-id="prefix-array-a">Prefix Array (<span class="math inline">\(a\)</span>)</h3>
+<h3 class="anchored" data-anchor-id="prefix-array-a">Prefix array (<span class="math inline">\(a\)</span>)</h3>
 <p>The matrix <span class="math inline">\(a\)</span> on the right stores these permutations. Each row <span class="math inline">\(k\)</span> contains the indices of haplotypes in their sorted order at site <span class="math inline">\(k\)</span>. For example, the haplotypes (columns) are reordered to <span class="math inline">\([0, 1, 3, 2, 4, 5]\)</span>, forming the first row of the prefix array <span class="math inline">\(a\)</span>; and the sort on site 1 reorders the columns to <span class="math inline">\([0, 3, 4, 5, 1, 2]\)</span>, forming the second row of <span class="math inline">\(a\)</span>.</p>
 </section>
 <section id="divergence-array-d" class="level3">
-<h3 class="anchored" data-anchor-id="divergence-array-d">Divergence Array (<span class="math inline">\(d\)</span>)</h3>
+<h3 class="anchored" data-anchor-id="divergence-array-d">Divergence array (<span class="math inline">\(d\)</span>)</h3>
 <p>The divergence array <span class="math inline">\(d\)</span> tracks the length of the matching prefix between adjacent haplotypes in the sorted order. Specifically, <span class="math inline">\(d_k[i]\)</span> stores the smallest index <span class="math inline">\(j\)</span> such that haplotype <span class="math inline">\(a_k[i]\)</span> matches <span class="math inline">\(a_k[i-1]\)</span> from site <span class="math inline">\(j\)</span> to site <span class="math inline">\(k\)</span>.</p>
 <ul>
 <li><strong>Purpose boxes</strong>: Highlight the site <span class="math inline">\(j\)</span> that determines the value of <span class="math inline">\(d_k[i]\)</span>. If the haplotypes match at the current site <span class="math inline">\(k\)</span> and previous sites, the box marks the start of that match.</li>

@@ -48,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-bec7cbc3933862984366e7801c579a4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7921ce03f2cd29c505a5247768a328bb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -379,8 +379,8 @@ window.Quarto = {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
   <ul class="collapse">
-  <li><a href="#the-tracking-process" id="toc-the-tracking-process" class="nav-link" data-scroll-target="#the-tracking-process">The Tracking Process</a></li>
-  <li><a href="#the-rules-of-interval-expansion" id="toc-the-rules-of-interval-expansion" class="nav-link" data-scroll-target="#the-rules-of-interval-expansion">The Rules of Interval Expansion</a></li>
+  <li><a href="#the-tracking-process" id="toc-the-tracking-process" class="nav-link" data-scroll-target="#the-tracking-process">The tracking process</a></li>
+  <li><a href="#the-rules-of-interval-expansion" id="toc-the-rules-of-interval-expansion" class="nav-link" data-scroll-target="#the-rules-of-interval-expansion">The rules of interval expansion</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
@@ -429,16 +429,16 @@ window.Quarto = {
 </div>
 <p>The figure above illustrates the two core phases of Algorithm 5: <strong>Tracking</strong> and <strong>Interval Expansion</strong>.</p>
 <section id="the-tracking-process" class="level3">
-<h3 class="anchored" data-anchor-id="the-tracking-process">The Tracking Process</h3>
+<h3 class="anchored" data-anchor-id="the-tracking-process">The tracking process</h3>
 <p>As we process the query sequence site-by-site (<span class="math inline">\(k\)</span>), we maintain a range (interval) in the prefix array that represents the subset of database haplotypes matching the query. At each site <span class="math inline">\(k\)</span>, the current interval block is identified as the intersection between the previous block (<strong>Rule 1</strong>) and the match genotype block (0s or 1s, according to the allele of the query haplotype at site <span class="math inline">\(k\)</span>) (<strong>Rule 2</strong>).</p>
 </section>
 <section id="the-rules-of-interval-expansion" class="level3">
-<h3 class="anchored" data-anchor-id="the-rules-of-interval-expansion">The Rules of Interval Expansion</h3>
+<h3 class="anchored" data-anchor-id="the-rules-of-interval-expansion">The rules of interval expansion</h3>
 <p>When the tracking block converges (e.g., the tracking width narrows to 1), Algorithm 5 performs an <strong>expansion</strong> to identify all maximal matches.</p>
 <ol type="1">
 <li><strong>Trigger</strong>: Expansion is initiated when the tracking width reaches 1.</li>
 <li><strong>Direction</strong>: The search proceeds to the right within the prefix array to find neighboring haplotypes. If the search reaches the boundary of an allele block, it expands to the left.</li>
-<li><strong>Height and Boundary</strong>: The length of these expanded matches is determined by the <strong>divergence vector (<span class="math inline">\(d_k\)</span>)</strong>. The “roof index of expansion” (highlighted in the divergence matrix) indicates the site where a neighboring haplotype begins matching the query.</li>
+<li><strong>Height and boundary</strong>: The length of these expanded matches is determined by the <strong>divergence vector (<span class="math inline">\(d_k\)</span>)</strong>. The “roof index of expansion” (highlighted in the divergence matrix) indicates the site where a neighboring haplotype begins matching the query.</li>
 <li><strong>Termination</strong>: We continue expanding to neighboring haplotypes as long as they share a match (where the <span class="math inline">\(d\)</span> value is less than the sentinel at that <span class="math inline">\(k\)</span>, <span class="math inline">\(\text{sentinel}=k+1\)</span>).</li>
 </ol>
 <p>Finally, the algorithm reports these matches (as seen in the “report these” box), identifying which database samples share the longest segments with our external query.</p>
@@ -447,6 +447,7 @@ window.Quarto = {
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <ul>
+<li>The query haplotypes must have the same length with PBWT haplotypes.</li>
 <li>Algorithm 5 is highly efficient, allowing a new haplotype of length <span class="math inline">\(N\)</span> to be mapped against a database of <span class="math inline">\(M\)</span> samples in <span class="math inline">\(O(N)\)</span> time. It iterates through sites only once and filters out unrelated haplotypes early.</li>
 </ul>
 

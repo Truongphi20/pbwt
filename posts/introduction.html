@@ -66,9 +66,9 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bec7cbc3933862984366e7801c579a4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-e938042b3e081363dfdc5586c75eecf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7921ce03f2cd29c505a5247768a328bb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b067882eea6cfda720526a955df8977d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -430,12 +430,17 @@ window.Quarto = {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The <strong>Positional Burrows-Wheeler Transform (PBWT)</strong>, introduced by <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3998136/">Richard Durbin in 2014</a>, revolutionized how we handle massive genomic datasets. By applying the principles of the Burrows-Wheeler Transform to positional genetic data, it enables ultra-efficient haplotype matching and search operations that were previously computationally prohibitive.</p>
-<p>The PBWT provides an efficient way to sort haplotypes at every position along a chromosome, enabling very fast identification of identical-by-descent (IBD) segments and other types of haplotype matching.</p>
+<p>The <strong>Positional Burrows-Wheeler Transform (PBWT)</strong>, introduced by Richard Durbin in 2014 <span class="citation" data-cites="durbinEfficientHaplotypeMatching2014">(<a href="#ref-durbinEfficientHaplotypeMatching2014" role="doc-biblioref">Durbin 2014</a>)</span>, is an efficient and scalable data structure for handling large haplotype datasets. It has been applied in many important genomic tasks:</p>
+<ul>
+<li>Phasing haplotypes <span class="citation" data-cites="browningFastTwostagePhasing2021a">(<a href="#ref-browningFastTwostagePhasing2021a" role="doc-biblioref">Browning et al. 2021</a>)</span></li>
+<li>Genotype imputation <span class="citation" data-cites="rubinacciImputationLowcoverageSequencing2023a rubinacciGenotypeImputationUsing2020">(<a href="#ref-rubinacciImputationLowcoverageSequencing2023a" role="doc-biblioref">Rubinacci et al. 2023</a>, <a href="#ref-rubinacciGenotypeImputationUsing2020" role="doc-biblioref">2020</a>)</span></li>
+<li>Identifying identical-by-descent (IBD) segments <span class="citation" data-cites="naseriRaPIDUltrafastPowerful2019">(<a href="#ref-naseriRaPIDUltrafastPowerful2019" role="doc-biblioref">Naseri et al. 2019</a>)</span></li>
+<li>Pangenomic haplotype analysis <span class="citation" data-cites="baaijensComputationalGraphPangenomics2022">(<a href="#ref-baaijensComputationalGraphPangenomics2022" role="doc-biblioref">Baaijens et al. 2022</a>)</span></li>
+</ul>
 <section id="motivation" class="level3">
 <h3 class="anchored" data-anchor-id="motivation">Motivation</h3>
 <p>The PBWT algorithm is powerful, yet it can be challenging for newcomers to grasp. I am grateful for Alistair Miles’s insightful <a href="https://alimanfoo.github.io/2016/06/21/understanding-pbwt.html">blog post</a>, which provides a practical bridge between Richard Durbin’s original paper and a working implementation.</p>
-<p>However, there is still a need for a deeper intuition of the underlying processes and how they translate into production-level code. I created this blog to provide mental models of how PBWT algorithms function. By analyzing <a href="https://github.com/richarddurbin/pbwt">Richard Durbin’s source code</a>, I have developed simplified pseudo-code that captures the core logic and created illustrative algorithmic diagrams to visualize how the algorithms are implemented with a specific example.</p>
+<p>However, there is still a need for a deeper intuition of the underlying processes and how they were implemented in practice. I created this blog to provide mental models of how PBWT algorithms function. By analyzing <a href="https://github.com/richarddurbin/pbwt">Richard Durbin’s source code</a>, I have developed simplified pseudo-code that captures the core logic and created illustrative algorithmic diagrams to visualize how the algorithms are implemented with a specific example.</p>
 </section>
 <section id="content-covered" class="level3">
 <h3 class="anchored" data-anchor-id="content-covered">Content covered</h3>
@@ -448,9 +453,26 @@ window.Quarto = {
 </ul></li>
 <li><strong>External Querying:</strong> Mapping a new haplotype against a PBWT database (<a href="../posts/pbwt-core/algorithm_25.html">Algorithm 2&amp;5</a>).</li>
 </ul>
+<div id="refs" class="references csl-bib-body hanging-indent" style="margin-top: 6.5rem;" role="list">
 <hr>
-<div id="refs" role="list">
-
+<div id="ref-baaijensComputationalGraphPangenomics2022" class="csl-entry" role="listitem">
+Baaijens, Jasmijn A., Paola Bonizzoni, Christina Boucher, et al. 2022. <span>“Computational Graph Pangenomics: A Tutorial on Data Structures and Their Applications.”</span> <em>Natural Computing</em> 21 (1): 81–108. <a href="https://doi.org/10.1007/s11047-022-09882-6">https://doi.org/10.1007/s11047-022-09882-6</a>.
+</div>
+<div id="ref-browningFastTwostagePhasing2021a" class="csl-entry" role="listitem">
+Browning, Brian L., Xiaowen Tian, Ying Zhou, and Sharon R. Browning. 2021. <span>“Fast Two-Stage Phasing of Large-Scale Sequence Data.”</span> <em>The American Journal of Human Genetics</em> 108 (10): 1880–90. <a href="https://doi.org/10.1016/j.ajhg.2021.08.005">https://doi.org/10.1016/j.ajhg.2021.08.005</a>.
+</div>
+<div id="ref-durbinEfficientHaplotypeMatching2014" class="csl-entry" role="listitem">
+Durbin, Richard. 2014. <span>“Efficient Haplotype Matching and Storage Using the Positional <span>Burrows</span>–<span>Wheeler</span> Transform (<span>PBWT</span>).”</span> <em>Bioinformatics</em> 30 (9): 1266–72. <a href="https://doi.org/10.1093/bioinformatics/btu014">https://doi.org/10.1093/bioinformatics/btu014</a>.
+</div>
+<div id="ref-naseriRaPIDUltrafastPowerful2019" class="csl-entry" role="listitem">
+Naseri, Ardalan, Xiaoming Liu, Kecong Tang, Shaojie Zhang, and Degui Zhi. 2019. <span>“<span>RaPID</span>: Ultra-Fast, Powerful, and Accurate Detection of Segments Identical by Descent (<span>IBD</span>) in Biobank-Scale Cohorts.”</span> <em>Genome Biology</em> 20 (1): 143. <a href="https://doi.org/10.1186/s13059-019-1754-8">https://doi.org/10.1186/s13059-019-1754-8</a>.
+</div>
+<div id="ref-rubinacciGenotypeImputationUsing2020" class="csl-entry" role="listitem">
+Rubinacci, Simone, Olivier Delaneau, and Jonathan Marchini. 2020. <span>“Genotype Imputation Using the <span>Positional Burrows Wheeler Transform</span>.”</span> <em>PLOS Genetics</em> 16 (11): e1009049. <a href="https://doi.org/10.1371/journal.pgen.1009049">https://doi.org/10.1371/journal.pgen.1009049</a>.
+</div>
+<div id="ref-rubinacciImputationLowcoverageSequencing2023a" class="csl-entry" role="listitem">
+Rubinacci, Simone, Robin J. Hofmeister, Bárbara Sousa Da Mota, and Olivier Delaneau. 2023. <span>“Imputation of Low-Coverage Sequencing Data from 150,119 <span>UK Biobank</span> Genomes.”</span> <em>Nature Genetics</em> 55 (7): 1088–90. <a href="https://doi.org/10.1038/s41588-023-01438-3">https://doi.org/10.1038/s41588-023-01438-3</a>.
+</div>
 </div>
 
 
