@@ -13,15 +13,15 @@ author: "Truong Phi"
 
 The figure above illustrates the two core phases of Algorithm 5: **Tracking** and **Interval Expansion**.
 
-### The Tracking Process
+### The tracking process
 As we process the query sequence site-by-site ($k$), we maintain a range (interval) in the prefix array that represents the subset of database haplotypes matching the query. At each site $k$, the current interval block is identified as the intersection between the previous block (**Rule 1**) and the match genotype block (0s or 1s, according to the allele of the query haplotype at site $k$) (**Rule 2**).
 
-### The Rules of Interval Expansion
+### The rules of interval expansion
 When the tracking block converges (e.g., the tracking width narrows to 1), Algorithm 5 performs an **expansion** to identify all maximal matches.
 
 1.  **Trigger**: Expansion is initiated when the tracking width reaches 1.
 2.  **Direction**: The search proceeds to the right within the prefix array to find neighboring haplotypes. If the search reaches the boundary of an allele block, it expands to the left.
-3.  **Height and Boundary**: The length of these expanded matches is determined by the **divergence vector ($d_k$)**. The "roof index of expansion" (highlighted in the divergence matrix) indicates the site where a neighboring haplotype begins matching the query.
+3.  **Height and boundary**: The length of these expanded matches is determined by the **divergence vector ($d_k$)**. The "roof index of expansion" (highlighted in the divergence matrix) indicates the site where a neighboring haplotype begins matching the query.
 4.  **Termination**: We continue expanding to neighboring haplotypes as long as they share a match (where the $d$ value is less than the sentinel at that $k$, $\text{sentinel}=k+1$).
 
 Finally, the algorithm reports these matches (as seen in the "report these" box), identifying which database samples share the longest segments with our external query.
